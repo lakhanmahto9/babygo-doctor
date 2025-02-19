@@ -9,21 +9,34 @@ import { useSelector } from "react-redux";
 import { useThemeColors } from "../../utils/useThemeColor";
 
 const Dashboard = () => {
-  const isDarkEnabled = useSelector((state)=> state.darkmode.dark);
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
   const colors = useThemeColors(isDarkEnabled);
   return (
     <Layout>
-      <div className="w-full flex">
-        <div className={`w-3/4  p-4 shadow-md ${isDarkEnabled ? "bg-[#010844]" : "bg-[#fbf5ff]"}`} style={{color:colors.text}}>
-          <Header/>
-          <Benner/>
-          <Cards/>
-          <ApointmentAddress/>
+      <div className="w-full flex flex-col md:flex-row">
+        {/* Left Section (Main Content) */}
+        <div
+          className={`w-full md:w-3/4 p-4 shadow-md ${isDarkEnabled ? "bg-[#010844]" : "bg-[#fbf5ff]"}`}
+          style={{ color: colors.text }}
+        >
+          <Header />
+          <Benner />
+
+          {/* Move Information below Banner only on small screens */}
+          <div className="block md:hidden">
+            <Information />
+          </div>
+
+          <Cards />
+          <ApointmentAddress />
         </div>
-        <div className="w-1/4">
-          <Information/>
+
+        {/* Right Section (Information) - Visible as sidebar on medium+ screens */}
+        <div className="hidden md:block w-full md:w-1/4">
+          <Information />
         </div>
       </div>
+
     </Layout>
   );
 };
