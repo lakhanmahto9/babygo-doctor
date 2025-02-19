@@ -2,8 +2,12 @@ import React from "react";
 import Layout from "../layout/Layout";
 import { BackIcon } from "../../assets/icons/Icons";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const Profile = ({ children }) => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors= useThemeColors(isDarkEnabled);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   console.log(pathname);
@@ -12,13 +16,13 @@ const Profile = ({ children }) => {
   }
   return (
     <Layout>
-      <div className="w-full bg-[#fbf5ff] relative">
-        <div className="flex items-center gap-4 h-12 border-b shadow-sm px-4 sticky bg-[#fbf5ff] top-0">
-          <BackIcon color="#000" width="24" height="24" />{" "}
+      <div className={`w-full relative ${isDarkEnabled ? "bg-[#010844]" : "bg-[#fbf5ff] "}`} style={{color:colors.text}}>
+        <div className={`flex items-center gap-4 h-12 border-b shadow-sm px-4 sticky top-0 ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.thirdCardBg}}>
+          <BackIcon color={colors.text} width="24" height="24" />{" "}
           <p className="text-lg font-bold">Profile</p>
         </div>
         <div className="w-full flex flex-col sm:flex-row p-4 gap-4">
-          <div className="bg-white w-full sm:w-1/4 border max-h-60">
+          <div className={`w-full sm:w-1/4 border rounded-md max-h-60 ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
             <div className="p-4">
               <p className="text-sm font-semibold">Profile Setting</p>
             </div>
@@ -27,9 +31,16 @@ const Profile = ({ children }) => {
               <div className="p-1 w-full">
                 <div
                   onClick={()=>pageswithc("/profile")}
-                  className={`w-full h-10 flex justify-center items-center ${
-                    pathname === "/profile" ? "bg-[#fbf5ff]" : "bg-white"
-                  }  rounded-md cursor-pointer`}
+                  className={`w-full h-10 flex justify-center items-center 
+                    ${pathname === "/profile" 
+                      ? isDarkEnabled 
+                        ? "bg-[#040836]"  // Dark mode background color
+                        : "bg-[#fbf5ff]"  // Light mode background color
+                      : isDarkEnabled 
+                        ? "bg-[#010844]"  // Dark mode default background
+                        : "bg-white"}  // Light mode default background
+                    rounded-md cursor-pointer`}
+                  
                 >
                   <p className="text-xs font-semibold">My Profile</p>
                 </div>
@@ -37,11 +48,15 @@ const Profile = ({ children }) => {
               <div className="p-1 w-full">
                 <div
                   onClick={()=>pageswithc("/profile/pan-information")}
-                  className={`w-full h-10 flex justify-center items-center ${
-                    pathname === "/profile/pan-information"
-                      ? "bg-[#fbf5ff]"
-                      : "bg-white"
-                  }  rounded-md cursor-pointer`}
+                  className={`w-full h-10 flex justify-center items-center 
+                    ${pathname === "/profile/pan-information"
+                      ? isDarkEnabled 
+                        ? "bg-[#040836]"  // Dark mode background color
+                        : "bg-[#fbf5ff]"  // Light mode background color
+                      : isDarkEnabled 
+                        ? "bg-[#010844]"  // Dark mode default background
+                        : "bg-white"}  // Light mode default background
+                    rounded-md cursor-pointer`}
                 >
                   <p className="text-xs font-semibold">PAN Information</p>
                 </div>
@@ -49,11 +64,15 @@ const Profile = ({ children }) => {
               <div className="p-1 w-full">
                 <div
                   onClick={()=>pageswithc("/profile/add-apointment-address")}
-                  className={`w-full h-10 flex justify-center items-center ${
-                    pathname === "/profile/add-apointment-address"
-                      ? "bg-[#fbf5ff]"
-                      : "bg-white"
-                  }  rounded-md cursor-pointer`}
+                  className={`w-full h-10 flex justify-center items-center 
+                    ${pathname === "/profile/add-apointment-address"
+                      ? isDarkEnabled 
+                        ? "bg-[#040836]"  // Dark mode background color
+                        : "bg-[#fbf5ff]"  // Light mode background color
+                      : isDarkEnabled 
+                        ? "bg-[#010844]"  // Dark mode default background
+                        : "bg-white"}  // Light mode default background
+                    rounded-md cursor-pointer`}
                 >
                   <p className="text-xs font-semibold">Apointment Address</p>
                 </div>

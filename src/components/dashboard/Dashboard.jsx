@@ -5,12 +5,16 @@ import Benner from "./Benner";
 import Cards from "./Cards";
 import ApointmentAddress from "./ApointmentAddress";
 import Information from "./Information";
+import { useSelector } from "react-redux";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const Dashboard = () => {
+  const isDarkEnabled = useSelector((state)=> state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   return (
     <Layout>
       <div className="w-full flex">
-        <div className="w-3/4 bg-[#fbf5ff] p-4 shadow-md">
+        <div className={`w-3/4  p-4 shadow-md ${isDarkEnabled ? "bg-[#010844]" : "bg-[#fbf5ff]"}`} style={{color:colors.text}}>
           <Header/>
           <Benner/>
           <Cards/>

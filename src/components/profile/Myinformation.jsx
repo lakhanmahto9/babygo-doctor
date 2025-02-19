@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProfileInformation } from "../../redux/slice/authSlice";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const Myinformation = () => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const profileInputRef = useRef(null);
   const aadhaar_cardInputRef = useRef(null);
   const user = useSelector((state)=>state.auth?.user?.data)
@@ -83,7 +86,7 @@ const Myinformation = () => {
 
   return (
     <Profile>
-      <div className="bg-white w-full border">
+      <div className={` w-full rounded-md border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.background,color:colors.text}}>
         <div className="p-4">
           <p className="font-bold">Add Information</p>
         </div>
@@ -101,7 +104,8 @@ const Myinformation = () => {
                 placeholder="Enter full name"
                 value={inputValue.name}
                 onChange={handleInputChange}
-                className="border-2 rounded-md w-full h-12 border-slate-400 outline-none px-2"
+                className={`rounded-md w-full h-12 outline-none px-2 ${isDarkEnabled ? "border border-gray-600" :"border-2 border-slate-400"}`}
+                style={{background:colors.secondCardBg}}
               />
             </div>
             <div className="w-full">
@@ -115,7 +119,8 @@ const Myinformation = () => {
                 placeholder="Enter 10-digit number"
                 value={inputValue.phone}
                 onChange={handleInputChange}
-                className="border-2 rounded-md w-full h-12 border-slate-400 outline-none px-2"
+                className={`rounded-md w-full h-12 outline-none px-2 ${isDarkEnabled ? "border border-gray-600" :"border-2 border-slate-400"}`}
+                style={{background:colors.secondCardBg}}
               />
             </div>
           </div>
@@ -124,7 +129,9 @@ const Myinformation = () => {
               name="gender"
               value={inputValue.gender}
               onChange={handleInputChange}
-              className="w-full border-2 rounded-md h-12 my-2 text-slate-400 border-slate-400 outline-none"
+              className={`w-full rounded-md h-12 my-2 text-slate-400 outline-none ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+              style={{background:colors.secondCardBg}}
+
             >
               <option value="">Select Gender</option>
               <option value="Male">Male</option>
@@ -234,7 +241,7 @@ const Myinformation = () => {
           </div>
           <button
             type="submit"
-            className="px-10 py-2 border my-4 bg-[#9e78ce] text-white"
+            className="px-10 py-2 border rounded-md my-4 bg-[#9e78ce] text-white"
           >
             {spin?<CircularProgress color="white" size={18}/>: "SUBMIT"}
           </button>

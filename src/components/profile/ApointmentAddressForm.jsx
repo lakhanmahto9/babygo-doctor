@@ -6,8 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getApointAddress } from "../../redux/slice/addMultipleAddressSlice";
 import { Button, Menu, MenuItem } from "@mui/material";
 import EditApointmentAddress from "./EditApointmentAddress";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const ApointmentAddressForm = () => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled)
   const apointmentaddress = useSelector(
     (state) => state.apointmentaddress?.address || []
   );
@@ -40,16 +43,16 @@ const ApointmentAddressForm = () => {
   }
   return (
     <Profile>
-      <div className="w-full bg-white border">
+      <div className={`w-full border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
         <div className="p-4">
           <p className="font-bold">Manage Apointment Address</p>
         </div>
-        <hr />
+      <div className={`border-b ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
         <div className="w-full p-4">
           {!openForm ? (
             <div
               onClick={() => setOpenform(true)}
-              className="w-full border flex justify-start items-center p-4 gap-4 cursor-pointer"
+              className={`w-full border flex justify-start items-center p-4 gap-4 cursor-pointer ${isDarkEnabled ? "border-gray-600" : ""}`}
             >
               <AddIcon color="#2892FC" width="20" height="20" />
               <p className="text-[#2892FC]">ADD NEW ADDRESS</p>
@@ -59,7 +62,7 @@ const ApointmentAddressForm = () => {
           )}
         </div>
         <div className="p-4">
-          <div className="border">
+          <div className={`border ${isDarkEnabled ? "border-gray-600" :""}`}>
             {apointmentaddress.map((item, index) =>
               selectedId !== item._id ? (
                 <div className="w-full flex p-4 border-b" key={index}>
