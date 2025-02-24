@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { CartIcon, HomeIcon, LogoutIcon, MoonIcon, ProfileIcon, SunIcon } from "../../assets/icons/Icons";
+import { ApointmentIcon, HomeIcon, LogoutIcon, MoonIcon, ProfileIcon, SunIcon } from "../../assets/icons/Icons";
 import { removeDark, setDark } from "../../redux/slice/darkModeSlice";
 import { useThemeColors } from "../../utils/useThemeColor";
 
@@ -10,6 +10,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const auth = useSelector((state)=> state.auth?.user?.data)
   const colors = useThemeColors(isDarkEnabled);
   const sideBarLink = [
     {
@@ -23,9 +24,9 @@ const Sidebar = () => {
       href: "/profile",
     },
     {
-      icon: CartIcon,
+      icon: ApointmentIcon,
       link: "Apointment",
-      href: "/treatment",
+      href: "/apointment",
     },
   ];
 
@@ -51,7 +52,7 @@ const Sidebar = () => {
       <div className="h-[15%] flex gap-10 justify-center items-center">
         <div className="w-20 h-20">
           <img
-            src={ "/profile.png"}
+            src={auth?.profile_pic || "/profile.png"}
             alt=""
             className="w-full h-full rounded-full"
           />

@@ -6,14 +6,15 @@ import { useThemeColors } from "../../utils/useThemeColor";
 
 const Information = () => {
   const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const auth = useSelector((state)=> state.auth?.user?.data)
   const colors = useThemeColors(isDarkEnabled);
   return (
     <div className="w-full mt-1">
       <div className="md:px-2">
         <div className={`w-full rounded-2xl border  flex flex-col justify-center items-center p-4 ${isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"}`} style={{background:colors.thirdCardBg,color:colors.text}}>
-          <img src="/profile.png" alt="" className="w-28 h-28 object-fill" />
-          <p className=" text-sm">Lakhan Mahto</p>
-          <p className=" text-sm">lakhan@gmail.com</p>
+          <img src={auth?.profile_pic || "/profile.png"} alt="" className="w-28 h-28 object-fill rounded-full" />
+          <p className=" text-purple-600 text-sm">{auth?.name}</p>
+          <p className="text-purple-600 text-sm">{auth?.email}</p>
         </div>
       </div>
       <div className="md:p-2 w-full mt-2">

@@ -48,3 +48,11 @@ export const doctorRegister = (payload) => {
       },
     });
   };
+
+  export const getBookApointmentApi = () => {
+    return axios.get(`${BASE_URL}/doctor/get-book-apointment`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };

@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import darkModeReducer from "../slice/darkModeSlice";
 import authReducer from "../slice/authSlice";
 import multipleAddressSlice from "../slice/addMultipleAddressSlice";
+import getBookApointmentSlice from "../slice/getBookApointmentSlice";
 
 const persistConfig = {
   key: "root",
@@ -19,11 +20,16 @@ const persistApointmentAddress = persistReducer(
   { ...persistConfig, key: "apointmentaddress" },
   multipleAddressSlice
 );
+const persistBookApointment = persistReducer(
+  { ...persistConfig, key: "apointment" },
+  getBookApointmentSlice
+);
 const store = configureStore({
   reducer: {
     darkmode: persistedDarkModeReducer,
     auth: persistAuth,
-    apointmentaddress:persistApointmentAddress
+    apointmentaddress:persistApointmentAddress,
+    apointment:persistBookApointment
   },
 });
 
