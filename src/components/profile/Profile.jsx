@@ -47,22 +47,6 @@ const Profile = ({ children }) => {
               </div>
               <div className="p-1 w-full">
                 <div
-                  onClick={()=>pageswithc("/profile/pan-information")}
-                  className={`w-full h-10 flex justify-center items-center 
-                    ${pathname === "/profile/pan-information"
-                      ? isDarkEnabled 
-                        ? "bg-[#040836]"  // Dark mode background color
-                        : "bg-[#fbf5ff]"  // Light mode background color
-                      : isDarkEnabled 
-                        ? "bg-[#010844]"  // Dark mode default background
-                        : "bg-white"}  // Light mode default background
-                    rounded-md cursor-pointer`}
-                >
-                  <p className="text-xs font-semibold">PAN Information</p>
-                </div>
-              </div>
-              <div className="p-1 w-full">
-                <div
                   onClick={()=>pageswithc("/profile/add-apointment-address")}
                   className={`w-full h-10 flex justify-center items-center 
                     ${pathname === "/profile/add-apointment-address"

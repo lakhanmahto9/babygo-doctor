@@ -5,20 +5,35 @@ import { useSelector } from "react-redux";
 import { useThemeColors } from "../../utils/useThemeColor";
 
 const Information = () => {
+  const apointment = useSelector((state) => state.apointment?.apointment || []);
   const isDarkEnabled = useSelector((state) => state.darkmode.dark);
-  const auth = useSelector((state)=> state.auth?.user?.data)
+  const auth = useSelector((state) => state.auth?.user?.data);
   const colors = useThemeColors(isDarkEnabled);
   return (
     <div className="w-full mt-1">
       <div className="md:px-2">
-        <div className={`w-full rounded-2xl border  flex flex-col justify-center items-center p-4 ${isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"}`} style={{background:colors.thirdCardBg,color:colors.text}}>
-          <img src={auth?.profile_pic || "/profile.png"} alt="" className="w-28 h-28 object-fill rounded-full" />
+        <div
+          className={`w-full rounded-2xl border  flex flex-col justify-center items-center p-4 ${
+            isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"
+          }`}
+          style={{ background: colors.thirdCardBg, color: colors.text }}
+        >
+          <img
+            src={auth?.profile_pic || "/profile.png"}
+            alt=""
+            className="w-28 h-28 object-fill rounded-full"
+          />
           <p className=" text-purple-600 text-sm">{auth?.name}</p>
           <p className="text-purple-600 text-sm">{auth?.email}</p>
         </div>
       </div>
       <div className="md:p-2 w-full mt-2">
-        <div className={`border w-full h-28 rounded-2xl flex flex-col justify-center items-center ${isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"}`} style={{background:colors.thirdCardBg,color:colors.text}}>
+        <div
+          className={`border w-full h-28 rounded-2xl flex flex-col justify-center items-center ${
+            isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"
+          }`}
+          style={{ background: colors.thirdCardBg, color: colors.text }}
+        >
           <div className="px-4 py-1 bg-[#9e78ce] rounded-full flex justify-center gap-2 items-center">
             <WalletIcon color="white" width="20" height="20" />
             <div className="flex justify-center items-center">
@@ -32,9 +47,33 @@ const Information = () => {
       <hr className="mt-4 border-t-1 border-[#9e78ce]" />
 
       <div className="w-full md:p-2 mb-2">
-        <div className={`bg-[#fbf5ff] border w-full h-80 rounded-2xl flex flex-col mt-4 ${isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"}`} style={{background:colors.thirdCardBg,color:colors.text}}>
+        <div
+          className={`bg-[#fbf5ff] border w-full h-80 rounded-2xl flex flex-col mt-4 ${
+            isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"
+          }`}
+          style={{ background: colors.thirdCardBg, color: colors.text }}
+        >
           <p className="text-sm font-semibold p-4">Transactin History</p>
           <hr className="border-t-1 border-[#9e78ce]" />
+          <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-60 scrollbar-hide">
+            {apointment.map((item, index) => (
+              <div
+                key={index}
+                className="w-full p-2 bg-[#fbf5ff] rounded-md"
+              >
+                <div>
+                  <p className="text-xs font-semibold">{item.petOwnerName}</p>
+                  <p className="text-xs font-semibold">
+                  <CurrencyRupee sx={{ width: 14, color: "#000" }} />{item.amount}
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <p className="text-xs">Order ID</p>
+                  <p className="text-xs">{item.orderId}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
