@@ -4,6 +4,7 @@ import { BackIcon, DocumentIcon, FilterIcon } from "../../assets/icons/Icons";
 import { useDispatch, useSelector } from "react-redux";
 import { GetBookApointment } from "../../redux/slice/getBookApointmentSlice";
 import moment from "moment/moment";
+import ApointmentDetails from "./ApointmentDetails";
 
 const ApointmentHome = () => {
   const apointment = useSelector((state) => state.apointment?.apointment || []);
@@ -31,59 +32,70 @@ const ApointmentHome = () => {
             </div>
           </div>
         </div>
-        <div className="w-full flex flex-col gap-4 p-4">
-          {apointment.map((item, index) => (
-            <div
-              key={index}
-              className="h-auto w-full border shadow-md rounded-2xl p-4 flex"
-            >
-              <div className="w-1/3 border-r p-1">
-                <p className="text-xs text-slate-500">
-                  Apointment No :- {item?.apointmentNumber}
-                </p>
-                <p className="text-sm text-slate-500 font-semibold">
-                  Dr. {item?.name}
-                </p>
-                <p className="text-sm text-slate-500 font-semibold">
-                  Visiting Time :- {item?.startTime} to {item?.endTime}
-                </p>
-                <p className="text-sm text-slate-500">
-                  {item?.address} {item?.locality} {item?.city}
-                </p>
-                <p className="text-sm text-slate-500">
-                  {item?.state} - {item?.zipCode}
-                </p>
-              </div>
-              <div className="w-1/3 border-r p-1">
-                <p className="text-xs text-slate-500">Owner Details</p>
-                <p className="text-sm text-slate-500 font-semibold">
-                  {item?.petOwnerName} - {item?.petOwnerPhoneNumber}
-                </p>
-                <p className="text-sm text-slate-500 font-semibold">
-                  Breed Type/Age :- {item?.breedType.toUpperCase()} /{" "}
-                  {item?.breedAge}
-                </p>
-                <p className="text-sm text-slate-500">{item.petOwnerAddress}</p>
-                <p className="text-sm text-slate-500">Jharkhand - 828306</p>
-              </div>
-              <div className="w-1/3 p-1">
-                <p className="text-xs text-slate-500">
-                  Apointment Date :-{" "}
-                  {moment(item?.apointmentDate).format("MMM, DD-YYYY")}
-                </p>
-                <p className="text-sm text-slate-500 font-semibold">
-                  Status - Pending
-                </p>
-                <div>
-                  <div className="h-10 border my-2 w-32 bg-[#fbf5ff] flex justify-center items-center rounded-md gap-2">
-                    <DocumentIcon color="#9e78ce" width="18" height="18" />{" "}
-                    <p className="text-[#9e78ce]">Download</p>
+        {apointment && apointment.length > 0 ? (
+          <div className="w-full flex flex-col gap-4 p-4">
+            {apointment.map((item, index) => (
+              <div
+                key={index}
+                className="h-auto w-full border shadow-md rounded-2xl p-4 flex flex-col sm:flex-row"
+              >
+                <div className="w-full sm:w-1/3 sm:border-r p-1">
+                  <p className="text-xs text-slate-500">
+                    Apointment No :- {item?.apointmentNumber}
+                  </p>
+                  <p className="text-sm text-slate-500 font-semibold">
+                    Dr. {item?.name}
+                  </p>
+                  <p className="text-sm text-slate-500 font-semibold">
+                    Visiting Time :- {item?.startTime} to {item?.endTime}
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    {item?.address} {item?.locality} {item?.city}
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    {item?.state} - {item?.zipCode}
+                  </p>
+                </div>
+                <div className="w-full sm:w-1/3 sm:border-r p-1">
+                  <p className="text-xs text-slate-500">Owner Details</p>
+                  <p className="text-sm text-slate-500 font-semibold">
+                    {item?.petOwnerName} - {item?.petOwnerPhoneNumber}
+                  </p>
+                  <p className="text-sm text-slate-500 font-semibold">
+                    Breed Type/Age :- {item?.breedType.toUpperCase()} /{" "}
+                    {item?.breedAge}
+                  </p>
+                  <p className="text-sm text-slate-500">
+                    {item.petOwnerAddress}
+                  </p>
+                  <p className="text-sm text-slate-500">Jharkhand - 828306</p>
+                </div>
+                <div className="w-full sm:w-1/3 p-1">
+                  <p className="text-xs text-slate-500">
+                    Apointment Date :-{" "}
+                    {moment(item?.apointmentDate).format("MMM, DD-YYYY")}
+                  </p>
+                  <p className="text-sm text-slate-500 font-semibold">
+                    Status - {item.status}
+                  </p>
+                  <div className="flex gap-4">
+                    <ApointmentDetails apointmentdata={item} />
+                    <button
+                      className="h-10 border my-2 w-32 border-purple-600 flex justify-center items-center rounded-md gap-2"
+                    >
+                      <p className="text-[#9e78ce]">Status</p>
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="w-full h-96 flex justify-center items-center flex-col">
+            <img src="/no-apointment.png" alt="" className="w-32 h-32" />
+            <p className="text-sm font-semibold">No apointment found!</p>
+          </div>
+        )}
       </div>
     </Layout>
   );
