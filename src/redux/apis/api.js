@@ -64,3 +64,19 @@ export const doctorRegister = (payload) => {
       },
     });
   };
+
+  export const addAndUpdateCertificateApi = (payload) => {
+    return axios.post(`${BASE_URL}/doctor/degree-certificate`,payload, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };
+
+  export const fetchCertificateApi = () => {
+    return axios.get(`${BASE_URL}/doctor/fetch-doctor-degree`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };

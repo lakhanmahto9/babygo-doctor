@@ -5,6 +5,7 @@ import darkModeReducer from "../slice/darkModeSlice";
 import authReducer from "../slice/authSlice";
 import multipleAddressSlice from "../slice/addMultipleAddressSlice";
 import getBookApointmentSlice from "../slice/getBookApointmentSlice";
+import uploadCertificateSlice from "../slice/addAndUpdateCertificateSlice";
 
 const persistConfig = {
   key: "root",
@@ -24,17 +25,19 @@ const persistBookApointment = persistReducer(
   { ...persistConfig, key: "apointment" },
   getBookApointmentSlice
 );
+const persistCertificate = persistReducer(
+  { ...persistConfig, key: "certificate" },
+  uploadCertificateSlice
+);
 const store = configureStore({
   reducer: {
     darkmode: persistedDarkModeReducer,
     auth: persistAuth,
-    apointmentaddress:persistApointmentAddress,
-    apointment:persistBookApointment
+    apointmentaddress: persistApointmentAddress,
+    apointment: persistBookApointment,
+    certificate: persistCertificate,
   },
 });
-
-
-
 
 const persistor = persistStore(store);
 
