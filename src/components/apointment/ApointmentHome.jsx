@@ -57,7 +57,7 @@ const ApointmentHome = () => {
             <div>
               <input
                 type="date"
-                className={`border p-2 text-slate-400 rounded-md ${isDarkEnabled ? "border-gray-600 bg-[#040836]" : ""}`}
+                className={`border p-2 text-slate-400 rounded-md  ${isDarkEnabled ? "border-gray-600 bg-[#040836]" : ""}`}
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
                 style={{

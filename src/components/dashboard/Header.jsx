@@ -16,11 +16,11 @@ const Header = () => {
   return (
     <div className="w-full flex justify-between items-center">
       <div className="">
-        <p className="text-sm">Welcome Back</p>
-        <p className="font-bold">Lakhan Mahto</p>
+        <p className="text-sm text-gray-100">Welcome Back</p>
+        <p className="font-bold text-white">Lakhan Mahto</p>
       </div>
       <div className="flex gap-4 justify-center items-center">
-        <div className="p-2 bg-[#9e78ce] rounded-md text-white border border-[#9e78ce]">{currentTime}</div>
+        <div className="p-2 bg-[#0494fc] rounded-md text-white border border-[#0494fc]">{currentTime}</div>
       </div>
     </div>
   );

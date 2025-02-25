@@ -12,7 +12,7 @@ export const useThemeColors = (isDarkEnabled) => {
       borderColor: isDarkEnabled ? "#1f2937" : "#e5e7eb",
       cardBg:isDarkEnabled ? "#101c44" : "#fff",
       secondCardBg:isDarkEnabled ? "#010844" : "#ffffff",
-      thirdCardBg: isDarkEnabled ? "#101c44" : "#fbf5ff",
+      thirdCardBg: isDarkEnabled ? "#101c44" : "#fff",
       inputBackground: isDarkEnabled ? "#101c44" : "#fff", 
       editbg: isDarkEnabled ? "#0d012d":"#e5f2ff",
       edittext: isDarkEnabled ? "#fff":"#131069",

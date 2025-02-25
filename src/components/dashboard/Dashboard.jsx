@@ -15,7 +15,7 @@ const Dashboard = () => {
     <Layout>
       <div className="w-full flex flex-col md:flex-row">
         <div
-          className={`w-full md:w-3/4 p-4 shadow-md ${isDarkEnabled ? "bg-[#010844]" : "bg-[#fbf5ff]"}`}
+          className={`w-full md:w-3/4 p-4 shadow-md ${isDarkEnabled ? "bg-[#010844]" : "bg-[#76d5fc]"}`}
           style={{ color: colors.text }}
         >
           <Header />
