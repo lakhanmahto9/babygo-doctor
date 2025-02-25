@@ -61,6 +61,22 @@ const Profile = ({ children }) => {
                   <p className="text-xs font-semibold">Appointment Address</p>
                 </div>
               </div>
+              <div className="p-1 w-full">
+                <div
+                  onClick={()=>pageswithc("/profile/degree-and-certification")}
+                  className={`w-full h-10 flex justify-center items-center 
+                    ${pathname === "/profile/degree-and-certification"
+                      ? isDarkEnabled 
+                        ? "bg-[#040836]"  // Dark mode background color
+                        : "bg-[#fbf5ff]"  // Light mode background color
+                      : isDarkEnabled 
+                        ? "bg-[#010844]"  // Dark mode default background
+                        : "bg-white"}  // Light mode default background
+                    rounded-md cursor-pointer`}
+                >
+                  <p className="text-xs font-semibold">Experience & Certification</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="w-full sm:w-3/4 h-auto">{children}</div>

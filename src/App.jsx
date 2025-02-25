@@ -2,13 +2,13 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import Home from "./components/Home";
 import Myinformation from "./components/profile/Myinformation";
-import Paninformation from "./components/profile/Paninformation";
 import ApointmentAddressForm from "./components/profile/ApointmentAddressForm";
 import ApointmentHome from "./components/apointment/ApointmentHome";
 import IsAuthenticated from "./components/middleware/IsAuthenticated";
 import Pagenotfound from "./components/apointment/Pagenotfound";
 import Login from "./components/credentials/Login";
 import Signup from "./components/credentials/Signup";
+import Degree from "./components/profile/Degree";
 
 function App() {
   return (
@@ -34,10 +34,10 @@ function App() {
           }
         />
         <Route
-          path="/profile/pan-information"
+          path="/profile/degree-and-certification"
           element={
             <IsAuthenticated>
-              <Paninformation />
+              <Degree />
             </IsAuthenticated>
           }
         />
