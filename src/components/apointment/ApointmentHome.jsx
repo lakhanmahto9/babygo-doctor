@@ -39,7 +39,7 @@ const ApointmentHome = () => {
         <div className="h-14 w-full sticky top-0 px-4 border bg-[#9e78ce] shadow-md flex justify-between items-center">
           <div onClick={gotohome} className="flex gap-4">
             <BackIcon color="#fff" height="24" width="24" />
-            <p className="text-white font-semibold hidden sm:block">Apointment</p>
+            <p className="text-white font-semibold hidden sm:block">Appointment</p>
           </div>
           <div className="flex justify-center items-center gap-4">
             <select
@@ -70,7 +70,7 @@ const ApointmentHome = () => {
               >
                 <div className="w-full sm:w-1/3 sm:border-r p-1">
                   <p className="text-xs text-slate-500">
-                    Apointment No :- {item?.apointmentNumber}
+                    Appointment No :- {item?.apointmentNumber}
                   </p>
                   <p className="text-sm text-slate-500 font-semibold">
                     Dr. {item?.name}
@@ -101,7 +101,7 @@ const ApointmentHome = () => {
                 </div>
                 <div className="w-full sm:w-1/3 p-1">
                   <p className="text-xs text-slate-500">
-                    Apointment Date :-{" "}
+                    Appointment Date :-{" "}
                     {moment(item?.apointmentDate).format("MMM, DD-YYYY")}
                   </p>
                   <p className="text-sm text-slate-500 font-semibold">
@@ -124,7 +124,7 @@ const ApointmentHome = () => {
         ) : (
           <div className="w-full h-96 flex justify-center items-center flex-col">
             <img src="/no-apointment.png" alt="" className="w-32 h-32" />
-            <p className="text-sm font-semibold">No apointment found!</p>
+            <p className="text-sm font-semibold">No appointment found!</p>
           </div>
         )}
       </div>

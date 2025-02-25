@@ -7,6 +7,8 @@ import ApointmentAddressForm from "./components/profile/ApointmentAddressForm";
 import ApointmentHome from "./components/apointment/ApointmentHome";
 import IsAuthenticated from "./components/middleware/IsAuthenticated";
 import Pagenotfound from "./components/apointment/Pagenotfound";
+import Login from "./components/credentials/Login";
+import Signup from "./components/credentials/Signup";
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
             </IsAuthenticated>
           }
         />
-        <Route path="/login" element={<Home />} />
+        {/* <Route path="/login" element={<Home />} /> */}
+        <Route path="/signin" element={<Login/>}/>
+        <Route path="/signup" element={<Signup/>}/>
         <Route
           path="/profile"
           element={
@@ -46,7 +50,7 @@ function App() {
           }
         />
         <Route
-          path="/apointment"
+          path="/appointment"
           element={
             <IsAuthenticated>
               <ApointmentHome />

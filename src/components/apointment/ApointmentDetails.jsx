@@ -39,7 +39,7 @@ const ApointmentDetails = ({ apointmentdata }) => {
       >
         <div className="w-full">
           <div className="w-full flex justify-center items-center">
-            <p className="text-sm font-semibold">APOINTMENT FOR PETS</p>
+            <p className="text-sm font-semibold">APPOINTMENT FOR PETS</p>
           </div>
           <hr className="h-0.5 w-full my-2 bg-black border-none" />
           <div className="flex justify-between">
@@ -48,7 +48,7 @@ const ApointmentDetails = ({ apointmentdata }) => {
                 #{apointmentdata.apointmentNumber}
               </p>
               <p className="text-xs">
-                Apointment Date :-{" "}
+                Appointment Date :-{" "}
                 {moment(apointmentdata.apointmentDate).format("MMM, DD-YYYY")}
               </p>
               <p className="text-xs">

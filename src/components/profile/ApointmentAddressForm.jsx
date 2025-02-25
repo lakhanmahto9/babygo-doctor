@@ -45,7 +45,7 @@ const ApointmentAddressForm = () => {
     <Profile>
       <div className={`w-full border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
         <div className="p-4">
-          <p className="font-bold">Manage Apointment Address</p>
+          <p className="font-bold">Manage Appointment Address</p>
         </div>
       <div className={`border-b ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
         <div className="w-full p-4">

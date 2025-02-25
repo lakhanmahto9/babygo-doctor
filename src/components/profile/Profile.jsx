@@ -58,7 +58,7 @@ const Profile = ({ children }) => {
                         : "bg-white"}  // Light mode default background
                     rounded-md cursor-pointer`}
                 >
-                  <p className="text-xs font-semibold">Apointment Address</p>
+                  <p className="text-xs font-semibold">Appointment Address</p>
                 </div>
               </div>
             </div>

@@ -28,7 +28,7 @@ const IsAuthenticated = ({children}) => {
 
   useEffect(() => {
     if (!isAuthenticated()) {
-      navigate("/login"); // Redirect to login if not authenticated
+      navigate("/signin"); // Redirect to login if not authenticated
     }
   }, [navigate]);
   return isAuthenticated() ? <>{children}</> : null;
