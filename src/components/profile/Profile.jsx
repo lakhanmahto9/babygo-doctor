@@ -23,10 +23,10 @@ const Profile = ({ children }) => {
         </div>
         <div className="w-full flex flex-col sm:flex-row p-4 gap-4">
           <div className={`w-full sm:w-1/4 border rounded-md max-h-60 ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
-            <div className="p-4">
+            <div className={`p-4 border-b ${isDarkEnabled ? "border-gray-600" : ""}`}>
               <p className="text-sm font-semibold">Profile Setting</p>
             </div>
-            <hr />
+
             <div className="w-full flex flex-col justify-center items-center">
               <div className="p-1 w-full">
                 <div

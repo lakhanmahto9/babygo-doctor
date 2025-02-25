@@ -35,7 +35,7 @@ const Cards = () => {
         </div>
         <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-40 scrollbar-hide">
           {pending.map((item, index) => (
-            <div key={index} className="w-full p-2 bg-[#fbf5ff] rounded-md flex justify-between">
+            <div key={index} className={`w-full p-2 rounded-md flex justify-between ${isDarkEnabled ? "bg-[#040836]" : "bg-[#fbf5ff] "}`}>
               <div>
                 <p className="text-xs font-semibold">{item.petOwnerName}</p>
                 <p className="text-xs font-semibold">
@@ -64,9 +64,9 @@ const Cards = () => {
           {" "}
           Treatment Done ({doneCount})
         </div>
-        <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-40 scrollbar-hide">
+        <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-40 scrollbar-hide ">
           {done.map((item, index) => (
-            <div key={index} className="w-full p-2 bg-[#fbf5ff] rounded-md flex justify-between">
+            <div key={index} className={`w-full p-2 rounded-md flex justify-between ${isDarkEnabled ? "bg-[#040836]" : "bg-[#fbf5ff]"}`}>
               <div>
                 <p className="text-xs font-semibold">{item.petOwnerName}</p>
                 <p className="text-xs font-semibold">

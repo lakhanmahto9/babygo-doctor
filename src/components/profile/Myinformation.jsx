@@ -87,10 +87,9 @@ const Myinformation = () => {
   return (
     <Profile>
       <div className={` w-full rounded-md border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.background,color:colors.text}}>
-        <div className="p-4">
+        <div className={`p-4 border-b ${isDarkEnabled ? "border-gray-600" : ""}`}>
           <p className="font-bold">Add Information</p>
         </div>
-        <hr />
         <form onSubmit={handleSubmit} className="p-4 w-full md:w-2/3 flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row w-full gap-4">
             <div className="w-full">
@@ -141,7 +140,7 @@ const Myinformation = () => {
           <div className="w-full flex flex-col sm:flex-row gap-4 items-center mt-2">
             <div className="w-full sm:w-1/2">
               <p className="text-slate-400">Profile Picture</p>
-              <div className="h-12 border-2 border-slate-400 rounded-md flex justify-center items-center">
+              <div className="h-12 border border-slate-400 rounded-md flex justify-center items-center">
                 {!inputValue.profile_pic ? (
                   <div
                     className="cursor-pointer"
@@ -174,7 +173,7 @@ const Myinformation = () => {
                 />
               </div>
             </div>
-            <div className="border-2 border-slate-400 h-36 rounded-2xl w-full sm:w-1/2 flex flex-col justify-center items-center">
+            <div className="border border-slate-400 h-36 rounded-2xl w-full sm:w-1/2 flex flex-col justify-center items-center">
               {inputValue.profile_pic ? (
                 <img
                   src={inputValue.profile_pic_preview}
@@ -192,7 +191,7 @@ const Myinformation = () => {
           <div className="w-full flex flex-col sm:flex-row gap-4 items-center mt-2">
             <div className="w-full sm:w-1/2">
               <p className="text-slate-400">Aadhaar Card</p>
-              <div className="h-12 border-2 border-slate-400 rounded-md flex justify-center items-center">
+              <div className="h-12 border border-slate-400 rounded-md flex justify-center items-center">
                 {!inputValue.aadhaar_card ? (
                   <div
                     className="cursor-pointer"
@@ -241,7 +240,7 @@ const Myinformation = () => {
           </div>
           <button
             type="submit"
-            className="px-10 py-2 border rounded-md my-4 bg-[#9e78ce] text-white"
+            className={`px-10 py-2 border rounded-md my-4 shadow-md  text-white ${isDarkEnabled ? "bg-[#040836] border-gray-600" : "bg-[#9e78ce]"}`}
           >
             {spin?<CircularProgress color="white" size={18}/>: "SUBMIT"}
           </button>

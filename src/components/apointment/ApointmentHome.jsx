@@ -6,11 +6,14 @@ import moment from "moment/moment";
 import ApointmentDetails from "./ApointmentDetails";
 import ConfirmModal from "./ConfirmModal";
 import { useNavigate } from "react-router-dom";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const ApointmentHome = () => {
   const apointment = useSelector((state) => state.apointment?.apointment || []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const [open, setOpen] = useState(false);
   const [id, setId] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
@@ -36,14 +39,14 @@ const ApointmentHome = () => {
   return (
     <Layout>
       <div className="w-full relative">
-        <div className="h-14 w-full sticky top-0 px-4 border bg-[#9e78ce] shadow-md flex justify-between items-center">
+        <div className={`h-14 w-full sticky top-0 px-4 border shadow-md flex justify-between items-center ${isDarkEnabled ? "bg-[#101c44] border-gray-600" : "bg-[#9e78ce]"}`}>
           <div onClick={gotohome} className="flex gap-4">
             <BackIcon color="#fff" height="24" width="24" />
-            <p className="text-white font-semibold hidden sm:block">Apointment</p>
+            <p className="text-white font-semibold hidden sm:block">Appointment</p>
           </div>
           <div className="flex justify-center items-center gap-4">
             <select
-              className="border border-white p-2 text-white rounded-md outline-none bg-[#9e78ce]"
+              className={`border p-2 text-white rounded-md outline-none  ${isDarkEnabled ? "bg-[#040836] border-gray-600":"bg-[#9e78ce]"}`}
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
             >
@@ -54,9 +57,12 @@ const ApointmentHome = () => {
             <div>
               <input
                 type="date"
-                className="border border-white p-2 text-slate-400 rounded-md"
+                className={`border p-2 text-slate-400 rounded-md ${isDarkEnabled ? "border-gray-600 bg-[#040836]" : ""}`}
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
+                style={{
+                  colorScheme: isDarkEnabled ? "dark" : "light", // Ensures Firefox adapts colors
+                }}
               />
             </div>
           </div>
@@ -66,9 +72,9 @@ const ApointmentHome = () => {
             {filteredApointments.map((item, index) => (
               <div
                 key={index}
-                className="h-auto w-full border shadow-md rounded-2xl p-4 flex flex-col sm:flex-row"
+                className={`h-auto w-full border shadow-md rounded-2xl p-4 flex flex-col sm:flex-row ${isDarkEnabled ? "bg-[#101c44] border-gray-600" : ""}`}
               >
-                <div className="w-full sm:w-1/3 sm:border-r p-1">
+                <div className={`w-full sm:w-1/3 sm:border-r p-1 ${isDarkEnabled ? "border-gray-600" : ""}`}>
                   <p className="text-xs text-slate-500">
                     Apointment No :- {item?.apointmentNumber}
                   </p>
@@ -85,7 +91,7 @@ const ApointmentHome = () => {
                     {item?.state} - {item?.zipCode}
                   </p>
                 </div>
-                <div className="w-full sm:w-1/3 sm:border-r p-1">
+                <div className={`w-full sm:w-1/3 sm:border-r p-1 ${isDarkEnabled ? "border-gray-600" : ""}`}>
                   <p className="text-xs text-slate-500">Owner Details</p>
                   <p className="text-sm text-slate-500 font-semibold">
                     {item?.petOwnerName} - {item?.petOwnerPhoneNumber}
@@ -112,9 +118,9 @@ const ApointmentHome = () => {
                     <button
                       disabled={item.status === "Done"}
                       onClick={() => openModal(item._id)}
-                      className="h-10 border my-2 w-32 border-purple-600 flex justify-center items-center rounded-md gap-2"
+                      className={`h-10 border my-2 w-32  flex justify-center items-center rounded-md gap-2 ${isDarkEnabled ? "border-gray-600" : "border-purple-600"}`}
                     >
-                      <p className="text-[#9e78ce]">Status</p>
+                      <p className={`${isDarkEnabled ? " text-[#D3D3D3]":"text-[#9e78ce]"}`}>Status</p>
                     </button>
                   </div>
                 </div>

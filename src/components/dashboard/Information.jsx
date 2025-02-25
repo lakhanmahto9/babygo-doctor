@@ -23,8 +23,8 @@ const Information = () => {
             alt=""
             className="w-28 h-28 object-fill rounded-full"
           />
-          <p className=" text-purple-600 text-sm">{auth?.name}</p>
-          <p className="text-purple-600 text-sm">{auth?.email}</p>
+          <p className={`text-sm ${isDarkEnabled ? "text-[#D3D3D3]" : "text-purple-600"}`}>{auth?.name}</p>
+          <p className={`text-sm ${isDarkEnabled ? "text-[#D3D3D3]" : "text-purple-600"}`}>{auth?.email}</p>
         </div>
       </div>
       <div className="md:p-2 w-full mt-2">
@@ -44,7 +44,9 @@ const Information = () => {
           <p className="text-xs mt-2">Available Balance</p>
         </div>
       </div>
-      <hr className="mt-4 border-t-1 border-[#9e78ce]" />
+      {/* <hr className="mt-4 border-t-1 border-[#9e78ce]" /> */}
+
+      <div className={`mt-4 border  ${isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"}`}></div>
 
       <div className="w-full md:p-2 mb-2">
         <div
@@ -54,17 +56,17 @@ const Information = () => {
           style={{ background: colors.thirdCardBg, color: colors.text }}
         >
           <p className="text-sm font-semibold p-4">Transactin History</p>
-          <hr className="border-t-1 border-[#9e78ce]" />
+          <hr className={`border-t-1 ${isDarkEnabled ? "border-gray-600" : "border-[#9e78ce]"}`} />
           <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-60 scrollbar-hide">
             {apointment.map((item, index) => (
               <div
                 key={index}
-                className="w-full p-2 bg-[#fbf5ff] rounded-md"
+                className={`w-full p-2 rounded-md ${isDarkEnabled ? "bg-[#040836]" : "bg-[#fbf5ff]"}`}
               >
                 <div>
                   <p className="text-xs font-semibold">{item.petOwnerName}</p>
                   <p className="text-xs font-semibold">
-                  <CurrencyRupee sx={{ width: 14, color: "#000" }} />{item.amount}
+                  <CurrencyRupee sx={{ width: 14, color: colors.text }} />{item.amount}
                   </p>
                 </div>
                 <div className="flex gap-2">

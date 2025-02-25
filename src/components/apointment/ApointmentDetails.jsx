@@ -3,9 +3,13 @@ import React, { useRef } from "react";
 import html2canvas from "html2canvas";
 import { DocumentIcon } from "../../assets/icons/Icons";
 import moment from "moment";
+import { useSelector } from "react-redux";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const ApointmentDetails = ({ apointmentdata }) => {
-  console.log(apointmentdata);
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
+  // console.log(apointmentdata);
   const contentRef = useRef();
   const generatePdf = async () => {
     const element = contentRef.current;
@@ -102,10 +106,10 @@ const ApointmentDetails = ({ apointmentdata }) => {
       <div>
         <button
           onClick={generatePdf}
-          className="h-10 border my-2 w-32 bg-[#fbf5ff] flex justify-center items-center rounded-md gap-2"
+          className={`h-10 border my-2 w-32 flex justify-center items-center rounded-md gap-2 ${isDarkEnabled ? "bg-[#040836] border-gray-600" : "bg-[#fbf5ff] "}`}
         >
-          <DocumentIcon color="#9e78ce" width="18" height="18" />{" "}
-          <p className="text-[#9e78ce]">Download</p>
+          <DocumentIcon color={colors.text} width="18" height="18" />{" "}
+          <p className={`${isDarkEnabled ? "text-[#D3D3D3]" : "text-[#9e78ce]"}`}>Download</p>
         </button>
       </div>
     </div>
