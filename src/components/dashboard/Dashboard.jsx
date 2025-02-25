@@ -14,7 +14,6 @@ const Dashboard = () => {
   return (
     <Layout>
       <div className="w-full flex flex-col md:flex-row">
-        {/* Left Section (Main Content) */}
         <div
           className={`w-full md:w-3/4 p-4 shadow-md ${isDarkEnabled ? "bg-[#010844]" : "bg-[#fbf5ff]"}`}
           style={{ color: colors.text }}
@@ -30,8 +29,6 @@ const Dashboard = () => {
           <Cards />
           <ApointmentAddress />
         </div>
-
-        {/* Right Section (Information) - Visible as sidebar on medium+ screens */}
         <div className="hidden md:block w-full md:w-1/4">
           <Information />
         </div>
