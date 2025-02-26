@@ -8,8 +8,12 @@ const ConfirmModal = ({ id, open, handleClose }) => {
   const [spin, setSpin] = useState(false);
   const submit = async () => {
     try {
+      let data = {
+        id:id,
+        status:"Done"
+      }
       setSpin(true);
-      const result = await dispatch(ChangeStatusApointment(id));
+      const result = await dispatch(ChangeStatusApointment(data));
       console.log(result.payload);
       if (result.payload?.data?.success) {
         handleClose();
@@ -30,11 +34,11 @@ const ConfirmModal = ({ id, open, handleClose }) => {
         <div className="flex gap-4">
           <button
             onClick={submit}
-            className="px-4 py-2 bg-purple-500 text-white font-bold"
+            className="px-4 py-2 bg-green-500 text-white font-bold"
           >
             {spin?<CircularProgress size={18} color="white"/>: "CONFIRM"}
           </button>
-          <button onClick={handleClose} className="font-bold">
+          <button onClick={handleClose} className="font-bold text-red-500">
             CANCEL
           </button>
         </div>

@@ -58,7 +58,7 @@ export const doctorRegister = (payload) => {
   };
 
   export const changeStatusApointmentApi = (payload) => {
-    return axios.get(`${BASE_URL}/doctor/change-apointment-status/${payload}`, {
+    return axios.post(`${BASE_URL}/doctor/change-apointment-status/${payload.id}`,payload, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       },

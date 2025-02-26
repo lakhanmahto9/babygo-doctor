@@ -3,12 +3,17 @@ import React from "react";
 import { WalletIcon } from "../../assets/icons/Icons";
 import { useSelector } from "react-redux";
 import { useThemeColors } from "../../utils/useThemeColor";
+import { useNavigate } from "react-router-dom";
 
 const Information = () => {
   const apointment = useSelector((state) => state.apointment?.apointment || []);
   const isDarkEnabled = useSelector((state) => state.darkmode.dark);
   const auth = useSelector((state) => state.auth?.user?.data);
   const colors = useThemeColors(isDarkEnabled);
+  const navigate = useNavigate();
+  const gotowallet = () =>{
+    navigate("/wallet")
+  }
   return (
     <div className="w-full mt-1">
       <div className="md:px-2">
@@ -34,7 +39,7 @@ const Information = () => {
           }`}
           style={{ background: colors.thirdCardBg, color: colors.text }}
         >
-          <div className="px-4 py-1 bg-[#9e78ce] rounded-full flex justify-center gap-2 items-center">
+          <div onClick={gotowallet} className="px-4 py-1 bg-[#9e78ce] rounded-full flex justify-center gap-2 items-center">
             <WalletIcon color="white" width="20" height="20" />
             <div className="flex justify-center items-center">
               <CurrencyRupee sx={{ width: 14, color: "white" }} />

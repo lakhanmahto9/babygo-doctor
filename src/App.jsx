@@ -9,6 +9,10 @@ import Pagenotfound from "./components/apointment/Pagenotfound";
 import Login from "./components/credentials/Login";
 import Signup from "./components/credentials/Signup";
 import Degree from "./components/profile/Degree";
+import Addbank from "./components/bank/Addbank";
+import Addupi from "./components/bank/Addupi";
+import WithdrawalHistory from "./components/bank/WithdrawalHistory";
+import Wallet from "./components/bank/Wallet";
 
 function App() {
   return (
@@ -23,8 +27,8 @@ function App() {
           }
         />
         {/* <Route path="/login" element={<Home />} /> */}
-        <Route path="/signin" element={<Login/>}/>
-        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/signin" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route
           path="/profile"
           element={
@@ -54,6 +58,38 @@ function App() {
           element={
             <IsAuthenticated>
               <ApointmentHome />
+            </IsAuthenticated>
+          }
+        />
+        <Route
+          path="/wallet"
+          element={
+            <IsAuthenticated>
+              <Wallet />
+            </IsAuthenticated>
+          }
+        />
+        <Route
+          path="/wallet/add-bank-details"
+          element={
+            <IsAuthenticated>
+              <Addbank />
+            </IsAuthenticated>
+          }
+        />
+        <Route
+          path="/wallet/add-upi"
+          element={
+            <IsAuthenticated>
+              <Addupi />
+            </IsAuthenticated>
+          }
+        />
+        <Route
+          path="/wallet/withdrawal"
+          element={
+            <IsAuthenticated>
+              <WithdrawalHistory />
             </IsAuthenticated>
           }
         />

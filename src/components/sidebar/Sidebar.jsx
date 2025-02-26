@@ -2,7 +2,7 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { ApointmentIcon, HomeIcon, LogoutIcon, MoonIcon, ProfileIcon, SunIcon } from "../../assets/icons/Icons";
+import { ApointmentIcon, HomeIcon, LogoutIcon, MoonIcon, ProfileIcon, SunIcon, WalletIcon } from "../../assets/icons/Icons";
 import { removeDark, setDark } from "../../redux/slice/darkModeSlice";
 import { useThemeColors } from "../../utils/useThemeColor";
 
@@ -27,6 +27,11 @@ const Sidebar = () => {
       icon: ApointmentIcon,
       link: "Appointment",
       href: "/appointment",
+    },
+    {
+      icon: WalletIcon,
+      link: "Wallet",
+      href: "/wallet",
     },
   ];
 
