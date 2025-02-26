@@ -1,21 +1,24 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
 import { editApointAddress } from "../../redux/slice/addMultipleAddressSlice";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
   const dispatch = useDispatch();
-//   const formatDateTimeLocal = (dateString) => {
-//     if (!dateString) return "";
-//     const date = new Date(dateString);
-//     const localDate = new Date(date.getTime());
-//     return localDate.toISOString().slice(0, 16);
-//   };
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
+  //   const formatDateTimeLocal = (dateString) => {
+  //     if (!dateString) return "";
+  //     const date = new Date(dateString);
+  //     const localDate = new Date(date.getTime());
+  //     return localDate.toISOString().slice(0, 16);
+  //   };
   const [inputValue, setInputValue] = useState({
     name: editaddress.name || "",
     phone: editaddress.phone || "",
-    startTime:editaddress.startTime || "",
+    startTime: editaddress.startTime || "",
     endTime: editaddress.endTime || "",
     clinicName: editaddress.clinicName || "",
     zipCode: editaddress.zipCode || "",
@@ -58,7 +61,7 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
     }
   };
   return (
-    <div className="w-full h-auto sm:p-4 sm:border">
+    <div className={`w-full h-auto sm:p-4  ${isDarkEnabled ? "" : "sm:border"}`}>
       <p className="font-semibold text-sm">EDIT ADDRESS</p>
       <form
         onSubmit={hadleSubmitForm}
@@ -76,7 +79,8 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               value={inputValue.name}
               onChange={handleInputChange}
               placeholder="Full name"
-              className="outline-none border-2 h-12 w-full rounded-md px-2 border-slate-400"
+              className={`outline-none h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+              style={{ background: colors.primary }}
             />
           </div>
           <div className="w-full sm:w-1/2 flex flex-col">
@@ -90,7 +94,9 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               onChange={handleInputChange}
               type="text"
               placeholder="10 digit phone number"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
         </div>
@@ -105,7 +111,9 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               value={inputValue.startTime}
               onChange={handleInputChange}
               type="time"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
           <div className="w-full sm:w-1/2 flex flex-col">
@@ -118,7 +126,9 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               value={inputValue.endTime}
               onChange={handleInputChange}
               type="time"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
         </div>
@@ -134,7 +144,9 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               value={inputValue.clinicName}
               onChange={handleInputChange}
               placeholder="Enter your clinic name"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
           <div className="w-full sm:w-1/2 flex flex-col">
@@ -148,7 +160,9 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               onChange={handleInputChange}
               type="text"
               placeholder="PIN Code"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
         </div>
@@ -164,7 +178,9 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               onChange={handleInputChange}
               type="text"
               placeholder="Locality"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
           <div className="w-full sm:w-1/2 flex flex-col">
@@ -178,7 +194,8 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               onChange={handleInputChange}
               type="text"
               placeholder="Enter number of visiting"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+              style={{ background: colors.primary }}
             />
           </div>
         </div>
@@ -191,7 +208,8 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
             value={inputValue.address}
             onChange={handleInputChange}
             id="address"
-            className="w-full outline-none border-2 border-slate-400 rounded-md p-4"
+            className={`w-full outline-none  rounded-md p-4 ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+            style={{ background: colors.primary }}
           />
         </div>
         <div className="w-full flex flex-col sm:flex-row gap-4">
@@ -206,7 +224,9 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               onChange={handleInputChange}
               type="text"
               placeholder="City/District/Town"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
           <div className="w-full sm:w-1/2 flex flex-col">
@@ -220,16 +240,18 @@ const EditApointmentAddress = ({ id, editaddress, closeEditAddressForm }) => {
               onChange={handleInputChange}
               type="text"
               placeholder="State Name"
-              className="outline-none border-2 h-12 w-full px-2 rounded-md border-slate-400"
+              className={`outline-none  h-12 w-full rounded-md px-2  ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-400"}`}
+
+              style={{ background: colors.primary }}
             />
           </div>
         </div>
         <div className="my-4">
-          <button type="submit" className="px-8 py-2 bg-[#9e78ce] text-white">
+          <button type="submit" className="px-8 rounded-md py-2 bg-[#006afe] text-white">
             {spin ? <CircularProgress color="white" size={18} /> : "SUBMIT"}
           </button>
           <button
-            className="px-4 text-[#9e78ce]"
+            className="px-4 text-[#006afe]"
             onClick={closeEditAddressForm}
           >
             CANCEL
