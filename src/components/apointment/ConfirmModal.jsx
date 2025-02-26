@@ -11,8 +11,12 @@ const ConfirmModal = ({ id, open, handleClose }) => {
   const [spin, setSpin] = useState(false);
   const submit = async () => {
     try {
+      let data = {
+        id:id,
+        status:"Done"
+      }
       setSpin(true);
-      const result = await dispatch(ChangeStatusApointment(id));
+      const result = await dispatch(ChangeStatusApointment(data));
       console.log(result.payload);
       if (result.payload?.data?.success) {
         handleClose();
@@ -37,7 +41,7 @@ const ConfirmModal = ({ id, open, handleClose }) => {
           >
             {spin?<CircularProgress size={18} color="white"/>: "CONFIRM"}
           </button>
-          <button onClick={handleClose} className="font-bold">
+          <button onClick={handleClose} className="font-bold text-red-500">
             CANCEL
           </button>
         </div>
