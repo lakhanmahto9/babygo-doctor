@@ -69,7 +69,7 @@ const Sidebar = () => {
             <div
               key={index}
               className={`w-full h-12 rounded-lg ${
-                isActive ? "bg-[#0494fc]" : ""
+                isActive ? "bg-[#006afe]" : ""
               } flex gap-4 items-center px-4 cursor-pointer mb-2`}
               onClick={() => changeLink(item)}
             >
@@ -103,14 +103,14 @@ const Sidebar = () => {
       </div>
       <div className="h-[15%] p-2">
         <div
-          className={`w-full h-full rounded-lg flex gap-8 justify-center items-center ${isDarkEnabled ? "bg-[#101c44]" : "bg-[#76d5fc]"}`}
+          className={`w-full h-full rounded-lg flex gap-8 justify-center items-center ${isDarkEnabled ? "bg-[#101c44]" : "shadow-md border border-gray-200"}`}
         >
           <div>
             <p className="text-sm font-bold">Log Out</p>
           </div>
           <div
             onClick={logoutfunc}
-            className="w-10 h-10 bg-[#0494fc] rounded-full flex justify-center items-center cursor-pointer"
+            className="w-10 h-10 bg-[#006afe] rounded-full flex justify-center items-center cursor-pointer"
           >
             <LogoutIcon color="#fff" width="24" height="24" />
           </div>

@@ -16,13 +16,14 @@ const Profile = ({ children }) => {
   }
   return (
     <Layout>
-      <div className={`w-full relative ${isDarkEnabled ? "bg-[#010844]" : "bg-[#fbf5ff] "}`} style={{color:colors.text}}>
+      <div className={`w-full relative ${isDarkEnabled ? "bg-[#010844]" : " "}`} style={{color:colors.text}}>
         <div className={`flex items-center gap-4 h-12 border-b shadow-sm px-4 sticky top-0 cursor-pointer ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.thirdCardBg}} onClick={()=>navigate('/')}>
           <BackIcon color={colors.text} width="24" height="24" />{" "}
           <p className="text-lg font-bold">Profile</p>
         </div>
         <div className="w-full flex flex-col sm:flex-row p-4 gap-4">
-          <div className={`w-full sm:w-1/4 border rounded-md max-h-60 ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
+          <div className={`w-full sm:w-1/4 border rounded-md max-h-60 ${isDarkEnabled ? "border-gray-600" : ""}`}
+           style={{background:colors.cardBg}}>
             <div className={`p-4 border-b ${isDarkEnabled ? "border-gray-600" : ""}`}>
               <p className="text-sm font-semibold">Profile Setting</p>
             </div>
@@ -35,14 +36,14 @@ const Profile = ({ children }) => {
                     ${pathname === "/profile" 
                       ? isDarkEnabled 
                         ? "bg-[#040836]"  // Dark mode background color
-                        : "bg-[#fbf5ff]"  // Light mode background color
+                        : "bg-[#006afe]"  // Light mode background color
                       : isDarkEnabled 
                         ? "bg-[#010844]"  // Dark mode default background
-                        : "bg-white"}  // Light mode default background
+                        : "bg-gray-400"}  // Light mode default background
                     rounded-md cursor-pointer`}
                   
                 >
-                  <p className="text-xs font-semibold">My Profile</p>
+                  <p className="text-xs font-semibold text-white">My Profile</p>
                 </div>
               </div>
               <div className="p-1 w-full">
@@ -52,13 +53,13 @@ const Profile = ({ children }) => {
                     ${pathname === "/profile/add-apointment-address"
                       ? isDarkEnabled 
                         ? "bg-[#040836]"  // Dark mode background color
-                        : "bg-[#fbf5ff]"  // Light mode background color
+                        : "bg-[#006afe]"  // Light mode background color
                       : isDarkEnabled 
                         ? "bg-[#010844]"  // Dark mode default background
-                        : "bg-white"}  // Light mode default background
+                        : "bg-gray-400"}  // Light mode default background
                     rounded-md cursor-pointer`}
                 >
-                  <p className="text-xs font-semibold">Apointment Address</p>
+                  <p className="text-xs font-semibold text-white">Apointment Address</p>
                 </div>
               </div>
             </div>

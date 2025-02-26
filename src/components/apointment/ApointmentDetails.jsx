@@ -106,10 +106,10 @@ const ApointmentDetails = ({ apointmentdata }) => {
       <div>
         <button
           onClick={generatePdf}
-          className={`h-10 border my-2 w-32 flex justify-center items-center rounded-md gap-2 ${isDarkEnabled ? "bg-[#040836] border-gray-600" : "bg-[#fbf5ff] "}`}
+          className={`h-10 border my-2 w-32 flex justify-center items-center rounded-md gap-2 ${isDarkEnabled ? "bg-[#040836] border-gray-600" : " border-[#006afe] "}`}
         >
           <DocumentIcon color={colors.text} width="18" height="18" />{" "}
-          <p className={`${isDarkEnabled ? "text-[#D3D3D3]" : "text-[#9e78ce]"}`}>Download</p>
+          <p className={`${isDarkEnabled ? "text-[#D3D3D3]" : "text-[#006afe]"}`}>Download</p>
         </button>
       </div>
     </div>

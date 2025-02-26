@@ -43,7 +43,7 @@ const ApointmentAddressForm = () => {
   }
   return (
     <Profile>
-      <div className={`w-full border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
+      <div className={`w-full border rounded-md ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
         <div className="p-4">
           <p className="font-bold">Manage Apointment Address</p>
         </div>
@@ -65,7 +65,7 @@ const ApointmentAddressForm = () => {
           <div className={`border ${isDarkEnabled ? "border-gray-600" :""}`}>
             {apointmentaddress.map((item, index) =>
               selectedId !== item._id ? (
-                <div className="w-full flex p-4 border-b" key={index}>
+                <div className={`w-full flex p-4 border-b ${isDarkEnabled ? "border-gray-600" : ""}`} key={index}>
                   <div className="w-4/5">
                     <p className="text-sm">
                       {item.address}, {item.locality}, {item.city}

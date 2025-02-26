@@ -35,7 +35,7 @@ const Cards = () => {
         </div>
         <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-40 scrollbar-hide">
           {pending.map((item, index) => (
-            <div key={index} className={`w-full p-2 rounded-md flex justify-between ${isDarkEnabled ? "bg-[#040836]" : "bg-[#76d5fc] "}`}>
+            <div key={index} className={`w-full p-2 rounded-md flex shadow-md justify-between ${isDarkEnabled ? "bg-[#040836]" : "border border-gray-200"}`}>
               <div>
                 <p className="text-xs font-semibold">{item.petOwnerName}</p>
                 <p className="text-xs font-semibold">
@@ -66,7 +66,7 @@ const Cards = () => {
         </div>
         <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-40 scrollbar-hide ">
           {done.map((item, index) => (
-            <div key={index} className={`w-full p-2 rounded-md flex justify-between ${isDarkEnabled ? "bg-[#040836]" : "bg-[#76d5fc]"}`}>
+            <div key={index} className={`w-full p-2 rounded-md flex justify-between ${isDarkEnabled ? "bg-[#040836]" : "shadow-md border-gray-200"}`}>
               <div>
                 <p className="text-xs font-semibold">{item.petOwnerName}</p>
                 <p className="text-xs font-semibold">

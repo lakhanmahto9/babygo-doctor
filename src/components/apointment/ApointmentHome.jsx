@@ -39,16 +39,17 @@ const ApointmentHome = () => {
   return (
     <Layout>
       <div className="w-full relative">
-        <div className={`h-14 w-full sticky top-0 px-4 border shadow-md flex justify-between items-center ${isDarkEnabled ? "bg-[#101c44] border-gray-600" : "bg-[#9e78ce]"}`}>
+        <div className={`h-14 w-full sticky top-0 px-4 border shadow-md flex justify-between items-center ${isDarkEnabled ? "bg-[#101c44] border-gray-600" : "bg-[#006afe]"}`}>
           <div onClick={gotohome} className="flex gap-4">
             <BackIcon color="#fff" height="24" width="24" />
             <p className="text-white font-semibold hidden sm:block">Appointment</p>
           </div>
           <div className="flex justify-center items-center gap-4">
             <select
-              className={`border p-2 text-white rounded-md outline-none  ${isDarkEnabled ? "bg-[#040836] border-gray-600":"bg-[#9e78ce]"}`}
+              className={`border p-2 rounded-md outline-none  ${isDarkEnabled ? "bg-[#040836] border-gray-600":""}`}
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
+              style={{color:colors.text}}
             >
               <option value="">All Status</option>
               <option value="Pending">Pending</option>
@@ -118,9 +119,9 @@ const ApointmentHome = () => {
                     <button
                       disabled={item.status === "Done"}
                       onClick={() => openModal(item._id)}
-                      className={`h-10 border my-2 w-32  flex justify-center items-center rounded-md gap-2 ${isDarkEnabled ? "border-gray-600" : "border-purple-600"}`}
+                      className={`h-10 border my-2 w-32  flex justify-center items-center rounded-md gap-2 ${isDarkEnabled ? "border-gray-600" : "border-[#006afe]"}`}
                     >
-                      <p className={`${isDarkEnabled ? " text-[#D3D3D3]":"text-[#9e78ce]"}`}>Status</p>
+                      <p className={`${isDarkEnabled ? " text-[#D3D3D3]":"text-[#006afe]"}`}>Status</p>
                     </button>
                   </div>
                 </div>

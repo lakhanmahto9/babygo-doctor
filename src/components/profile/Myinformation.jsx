@@ -240,7 +240,7 @@ const Myinformation = () => {
           </div>
           <button
             type="submit"
-            className={`px-10 py-2 border rounded-md my-4 shadow-md  text-white ${isDarkEnabled ? "bg-[#040836] border-gray-600" : "bg-[#9e78ce]"}`}
+            className={`px-10 py-2 border rounded-md my-4 shadow-md  text-white ${isDarkEnabled ? "bg-[#040836] border-gray-600" : "bg-[#006afe]"}`}
           >
             {spin?<CircularProgress color="white" size={18}/>: "SUBMIT"}
           </button>

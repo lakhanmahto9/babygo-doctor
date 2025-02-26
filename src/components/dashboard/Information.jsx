@@ -34,7 +34,7 @@ const Information = () => {
           }`}
           // style={{ background: colors.thirdCardBg, color: colors.text }}
         >
-          <div className="px-4 py-1 bg-[#0494fc] rounded-full flex justify-center gap-2 items-center">
+          <div className="px-4 py-1 bg-[#006afe] rounded-full flex justify-center gap-2 items-center">
             <WalletIcon color="white" width="20" height="20" />
             <div className="flex justify-center items-center">
               <CurrencyRupee sx={{ width: 14, color: "white" }} />
@@ -46,7 +46,7 @@ const Information = () => {
       </div>
       {/* <hr className="mt-4 border-t-1 border-[#9e78ce]" /> */}
 
-      <div className={`mt-4 border  ${isDarkEnabled ? "border-gray-600" : "border-[#76d5fc]"}`}></div>
+      <div className={`mt-4 border  ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
 
       <div className="w-full md:p-2 mb-2">
         <div
@@ -61,7 +61,7 @@ const Information = () => {
             {apointment.map((item, index) => (
               <div
                 key={index}
-                className={`w-full p-2 rounded-md ${isDarkEnabled ? "bg-[#040836]" : "bg-[#76d5fc]"}`}
+                className={`w-full p-2 rounded-md ${isDarkEnabled ? "bg-[#040836]" : "shadow-md border-gray-200"}`}
               >
                 <div>
                   <p className="text-xs font-semibold">{item.petOwnerName}</p>
