@@ -18,10 +18,10 @@ const ApointmentAddress = () => {
         <div className="p-2 bg-[#006afe] rounded-full">
           <AddIcon color="#fff" width="20" height="20" />
         </div>{" "}
-        <p className="text-sm font-semibold">Add Apointment Address</p>
+        <p className="text-sm font-semibold">Add Appointment Address</p>
       </div>
       <div className={`w-full md:w-1/2 bg-white h-auto p-4 rounded-xl border flex justify-start items-center gap-4 ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
-        <p className="text-sm font-semibold">Total Apointment Address ({apointmentaddress})</p>
+        <p className="text-sm font-semibold">Total Appointment Address ({apointmentaddress})</p>
       </div>
     </div>
   );

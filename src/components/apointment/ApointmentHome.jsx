@@ -77,7 +77,7 @@ const ApointmentHome = () => {
               >
                 <div className={`w-full sm:w-1/3 sm:border-r p-1 ${isDarkEnabled ? "border-gray-600" : ""}`}>
                   <p className="text-xs text-slate-500">
-                    Apointment No :- {item?.apointmentNumber}
+                    Appointment No :- {item?.apointmentNumber}
                   </p>
                   <p className="text-sm text-slate-500 font-semibold">
                     Dr. {item?.name}
@@ -108,7 +108,7 @@ const ApointmentHome = () => {
                 </div>
                 <div className="w-full sm:w-1/3 p-1">
                   <p className="text-xs text-slate-500">
-                    Apointment Date :-{" "}
+                    Appointment Date :-{" "}
                     {moment(item?.apointmentDate).format("MMM, DD-YYYY")}
                   </p>
                   <p className="text-sm text-slate-500 font-semibold">
@@ -131,7 +131,7 @@ const ApointmentHome = () => {
         ) : (
           <div className="w-full h-96 flex justify-center items-center flex-col">
             <img src="/no-apointment.png" alt="" className="w-32 h-32" />
-            <p className="text-sm font-semibold">No apointment found!</p>
+            <p className="text-sm font-semibold">No appointment found!</p>
           </div>
         )}
       </div>

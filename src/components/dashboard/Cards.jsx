@@ -31,7 +31,7 @@ const Cards = () => {
             isDarkEnabled ? "border-gray-600" : ""
           }`}
         >
-          New Apointment ({pendingCount})
+          New Appointment ({pendingCount})
         </div>
         <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-40 scrollbar-hide">
           {pending.map((item, index) => (
@@ -43,7 +43,7 @@ const Cards = () => {
                 </p>
               </div>
               <div>
-                <p className="text-xs">Apointment Date</p>
+                <p className="text-xs">Appointment Date</p>
                 <p>{moment(item.apointmentDate).format("MMM, DD - YYYY")}</p>
               </div>
             </div>
@@ -74,7 +74,7 @@ const Cards = () => {
                 </p>
               </div>
               <div>
-                <p className="text-xs">Apointment Date</p>
+                <p className="text-xs">Appointment Date</p>
                 <p>{moment(item.apointmentDate).format("MMM, DD - YYYY")}</p>
               </div>
             </div>

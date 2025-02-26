@@ -25,8 +25,8 @@ const Sidebar = () => {
     },
     {
       icon: ApointmentIcon,
-      link: "Apointment",
-      href: "/apointment",
+      link: "Appointment",
+      href: "/appointment",
     },
   ];
 
@@ -41,7 +41,7 @@ const Sidebar = () => {
 
   const logoutfunc = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/signin");
   };
 
   return (
