@@ -162,13 +162,28 @@ const ApointmentHome = () => {
                   </p>
                   <div className="w-full flex justify-between gap-4">
                     <ApointmentDetails apointmentdata={item} />
-                    <button
-                      disabled={item.status === "Done"}
-                      onClick={() => openModal(item._id)}
-                      className={`h-10 border my-2 w-32  flex justify-center items-center rounded-md gap-2 ${isDarkEnabled ? "border-gray-600" : "border-[#006afe]"}`}
-                    >
-                      <p className={`${isDarkEnabled ? " text-[#D3D3D3]":"text-[#006afe]"}`}>Status</p>
-                    </button>
+                    {item.status !== "Done" &&
+                      item.status !== "Pending" &&
+                      item.status !== "Deny" && (
+                        <button
+                          onClick={() => openModal(item._id)}
+                          className={`h-10 border my-2 w-32  flex justify-center items-center rounded-md gap-2 ${
+                            isDarkEnabled
+                              ? "border-gray-600"
+                              : "border-blue-600"
+                          }`}
+                        >
+                          <p
+                            className={`${
+                              isDarkEnabled
+                                ? " text-[#D3D3D3]"
+                                : "text-blue-600"
+                            }`}
+                          >
+                            Status
+                          </p>
+                        </button>
+                      )}
                   </div>
                 </div>
               </div>
