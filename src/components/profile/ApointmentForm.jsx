@@ -232,7 +232,7 @@ const ApointmentForm = ({ closeAddressForm }) => {
           <button type="submit" className="px-8 rounded-md py-2 bg-[#006afe] text-white">
             {spin?<CircularProgress color="white" size={18}/>:"SUBMIT"}
           </button>
-          <button className="px-4 text-[#9e78ce]" onClick={closeAddressForm}>
+          <button className="px-4 text-[#006afe]" onClick={closeAddressForm}>
             CANCEL
           </button>
         </div>

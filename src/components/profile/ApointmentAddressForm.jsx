@@ -83,7 +83,7 @@ const ApointmentAddressForm = () => {
                       aria-haspopup="true"
                       onClick={(event) => handleMenuClick(event, item._id)}
                     >
-                      <VerticalThreeDotIcon color="" width="18" height="18" />
+                      <VerticalThreeDotIcon color={colors.text} width="18" height="18" />
                     </Button>
 
                     <Menu
@@ -103,7 +103,7 @@ const ApointmentAddressForm = () => {
                   </div>
                 </div>
               ) : (
-                <div className="p-4 border">
+                <div className={`p-4 border ${isDarkEnabled ? "border-gray-600" : ""}`}>
                   <EditApointmentAddress
                     id={selectedId}
                     editaddress={item}
