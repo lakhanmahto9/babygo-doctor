@@ -7,10 +7,13 @@ import {
 } from "../../redux/slice/addAndUpdateCertificateSlice";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const Degree = () => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const certificate = useSelector((state) => state.certificate?.certificate);
-  console.log(certificate);
+  // console.log(certificate);
   const dispatch = useDispatch();
   const regCertificate = useRef();
   const expCertificate = useRef();
@@ -157,16 +160,17 @@ const Degree = () => {
   }, []);
   return (
     <Profile>
-      <div className="w-full bg-white border">
+      <div className={`w-full rounded-md border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{ background: colors.background }}>
         <div className="p-4">
           <p className="text-sm font-semibold">
             {" "}
             Add your Experience and Certificate here
           </p>
         </div>
-        <hr />
+        {/* <hr /> */}
+        <div className={`border ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
         <div className="p-4 w-full">
-          <div className="border p-4 w-full">
+          <div className={`border p-4 w-full ${isDarkEnabled ? "border-gray-600" : " "}`}>
             <form
               onSubmit={handleSubmit}
               className="w-full lg:w-2/3 flex flex-col gap-4"
@@ -181,7 +185,8 @@ const Degree = () => {
                     type="text"
                     required
                     placeholder="Registration Number"
-                    className="outline-blue-700 border h-12 rounded-md px-4"
+                    className={`outline-blue-700 border h-12 rounded-md px-4 ${isDarkEnabled ? "border-gray-600" : ""}`}
+                    style={{ background: colors.secondbackground }}
                   />
                 </div>
                 <div className="flex flex-col gap-1 w-full sm:w-1/2">
@@ -192,7 +197,8 @@ const Degree = () => {
                     onChange={handleInputChange}
                     id=""
                     required
-                    className="h-12 border outline-blue-700 rounded-md"
+                    className={`h-12 border outline-blue-700 rounded-md ${isDarkEnabled ? "border-gray-600" : ""}`}
+                    style={{ background: colors.secondbackground }}
                   >
                     <option value="">Select Experience</option>
                     <option value="1 To 3 Years">1 To 3 Years</option>
@@ -208,7 +214,7 @@ const Degree = () => {
                     Upload Registration Certificate
                   </label>
                   {degree.regCertificatePrev && (
-                    <div className="mt-4 border rounded-md overflow-hidden h-72">
+                    <div className="mt-4 border mb-2 rounded-md overflow-hidden h-72">
                       <img
                         src={degree.regCertificatePrev}
                         alt=""
@@ -225,17 +231,17 @@ const Degree = () => {
                       Upload Registration Certificate
                     </button>
                   ) : (
-                    <div className="flex gap-2 border p-1 bg-blue-600 rounded-md">
+                    <div className={`flex gap-2 p-1 bg-blue-600 rounded-md ${isDarkEnabled ? "" : "border"}`}>
                       <button
                         type="button"
                         onClick={handleRegCertificateClick}
-                        className="h-12 border w-full bg-green-600 text-white rounded-md"
+                        className={`h-12 w-full bg-green-600 text-white rounded-md ${isDarkEnabled ? "" : "border"}`}
                       >
                         Change
                       </button>
                       <button
                         onClick={handleRemoveRegCertificate}
-                        className="h-12 border w-full bg-red-600 text-white rounded-md"
+                        className={`h-12 w-full bg-red-600 text-white rounded-md ${isDarkEnabled ? "" : "border"}`}
                       >
                         Remove
                       </button>
@@ -254,7 +260,7 @@ const Degree = () => {
                 <div className="w-full sm:w-1/2">
                   <label htmlFor="regcer">Upload Experience Certificate</label>
                   {degree.expCertificatePrev && (
-                    <div className="mt-4 border rounded-md h-72 overflow-hidden">
+                    <div className="mt-4 border  mb-2 rounded-md h-72 overflow-hidden">
                       <img
                         src={degree.expCertificatePrev}
                         alt=""
@@ -266,22 +272,22 @@ const Degree = () => {
                     <button
                       type="button"
                       onClick={handleExpCertificateClick}
-                      className="h-12 border w-full bg-blue-600 text-white rounded-md"
+                      className={`h-12 w-full bg-blue-600 text-white rounded-md ${isDarkEnabled ? "" : " border"}`}
                     >
                       Upload Registration Certificate
                     </button>
                   ) : (
-                    <div className="flex gap-2 border p-1 bg-blue-600 rounded-md">
+                    <div className={`flex gap-2  p-1 bg-blue-600 rounded-md ${isDarkEnabled ? "" : "border"}`}>
                       <button
                         type="button"
                         onClick={handleExpCertificateClick}
-                        className="h-12 border w-full bg-green-600 text-white rounded-md"
+                        className={`h-12  w-full bg-green-600 text-white rounded-md ${isDarkEnabled ? "" : "border"}`}
                       >
                         Change
                       </button>
                       <button
                         onClick={handleRemoveExpCertificate}
-                        className="h-12 border w-full bg-red-600 text-white rounded-md"
+                        className={`h-12  w-full bg-red-600 text-white rounded-md ${isDarkEnabled ? "" : "border"}`}
                       >
                         Remove
                       </button>
@@ -310,7 +316,8 @@ const Degree = () => {
                     value={degree.degreeCetificateNo}
                     onChange={handleInputChange}
                     placeholder="Degree Certificate Number"
-                    className="outline-blue-700 border h-12 rounded-md px-4"
+                    className={`outline-blue-700 border h-12 rounded-md px-4 ${isDarkEnabled ? "border-gray-600" : ""}`}
+                    style={{ background: colors.secondbackground }}
                   />
                 </div>
               </div>
@@ -318,7 +325,7 @@ const Degree = () => {
                 <div className="w-full sm:w-1/2">
                   <label htmlFor="regcer">Upload Degree Certificate</label>
                   {degree.degreeCertificatePrev && (
-                    <div className="mt-4 border rounded-md h-72 overflow-hidden">
+                    <div className="mt-4 border mb-2 rounded-md h-72 overflow-hidden">
                       <img
                         src={degree.degreeCertificatePrev}
                         alt=""
@@ -330,22 +337,22 @@ const Degree = () => {
                     <button
                       type="button"
                       onClick={handleDegCertificateClick}
-                      className="h-12 border w-full bg-blue-600 text-white rounded-md"
+                      className="h-12 border  w-full bg-blue-600 text-white rounded-md"
                     >
                       Upload Degree Certificate
                     </button>
                   ) : (
-                    <div className="flex gap-2 border p-1 bg-blue-600 rounded-md">
+                    <div className={`flex gap-2 p-1 bg-blue-600 rounded-md ${isDarkEnabled ? " " : "border"}`}>
                       <button
                         type="button"
                         onClick={handleDegCertificateClick}
-                        className="h-12 border w-full bg-green-600 text-white rounded-md"
+                        className={`h-12 w-full bg-green-600 text-white rounded-md ${isDarkEnabled ? "" : "border"}`}
                       >
                         Change
                       </button>
                       <button
                         onClick={handleRemoveDegCertificate}
-                        className="h-12 border w-full bg-red-600 text-white rounded-md"
+                        className={`h-12 w-full bg-red-600 text-white rounded-md ${isDarkEnabled ? "" : "border"}`}
                       >
                         Remove
                       </button>
