@@ -33,7 +33,7 @@ const AcceptModal = ({ id, status, open, handleClose }) => {
         </div>
         <div className="py-4">
           <p className="text-sm font-semibold">
-            Are you sure you want to accept or deny?
+            {`Are you sure you want to ${status==="Deny" || status === "Pending"?"accept?":"or deny?"}`}
           </p>
         </div>
         <div className="flex gap-4 w-full">
