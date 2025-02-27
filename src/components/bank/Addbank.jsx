@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import BankHome from "./BankHome";
 import { AddIcon, VerticalThreeDotIcon } from "../../assets/icons/Icons";
 import AddBankForm from "./AddBankForm";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Menu, MenuItem } from "@mui/material";
 import EditBank from "./EditBank";
-import { FetchBankDetails } from "../../redux/slice/addBankDetailSlice";
+
 
 const Addbank = () => {
   const bank = useSelector((state) => state.bank?.bank || []);
@@ -38,10 +38,6 @@ const Addbank = () => {
     handleClose();
     setSelectedBankId(id);
   };
-
-  useEffect(() => {
-    dispatch(FetchBankDetails());
-  }, [dispatch]);
 
   return (
     <BankHome>

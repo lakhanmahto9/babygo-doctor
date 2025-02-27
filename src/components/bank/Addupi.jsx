@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import BankHome from "./BankHome";
 import AddUPiForm from "./AddUPiForm";
 import { AddIcon, VerticalThreeDotIcon } from "../../assets/icons/Icons";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Button, Menu, MenuItem } from "@mui/material";
 import UpiEditForm from "./UpiEditForm";
-import { FetchUPIDetails } from "../../redux/slice/addUpiDetailSlice";
+
 
 const Addupi = () => {
   const upi = useSelector((state)=> state.upi?.upi || []);
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedBankId, setSelectedBankId] = useState("");
@@ -35,9 +34,7 @@ const Addupi = () => {
     handleClose();
     setSelectedBankId(id);
   };
-  useEffect(()=>{
-    dispatch(FetchUPIDetails())
-  },[dispatch])
+ 
   return (
     <BankHome>
       <div className="w-full border rounded-sm p-4">

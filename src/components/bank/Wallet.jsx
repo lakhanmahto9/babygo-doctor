@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BankHome from "./BankHome";
 import { CurrencyRupee } from "@mui/icons-material";
 import { WalletIcon } from "../../assets/icons/Icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useThemeColors } from "../../utils/useThemeColor";
 import UpiInfo from "./selectupiorbank/UpiInfo";
 import BankInfo from "./selectupiorbank/BankInfo";
+import { FetchBankDetails } from "../../redux/slice/addBankDetailSlice";
+import { FetchUPIDetails } from "../../redux/slice/addUpiDetailSlice";
 
 const Wallet = () => {
+  const dispatch = useDispatch();
   const isDarkEnabled = useSelector((state) => state.darkmode.dark);
   const colors = useThemeColors(isDarkEnabled);
   const [selectAccount, setSelectAccount] = useState(true);
+  useEffect(() => {
+    dispatch(FetchBankDetails());
+    dispatch(FetchUPIDetails());
+  }, [dispatch]);
   return (
     <BankHome>
       <div className={`w-full border rounded-md ${isDarkEnabled ? "border-gray-600" : ""}`} style={{ background: colors.background }}>
