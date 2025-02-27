@@ -54,6 +54,7 @@ const UpiEditForm = ({ closeForm, data }) => {
               onChange={(e) => setUpi(e.target.value)}
               type="text"
               placeholder="UPI ID"
+              required
               className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
             />
           </div>

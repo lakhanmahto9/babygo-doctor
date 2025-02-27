@@ -1,0 +1,29 @@
+import React from "react";
+import { useSelector } from "react-redux";
+
+const BankInfo = () => {
+  const bank = useSelector((state) => state.bank?.bank || []);
+  return (
+    <div className="w-full">
+      {bank && bank.length > 0 ? (
+        bank.map((item, index) => (
+          <div className="flex flex-col gap-1" key={index}>
+            <div className="flex gap-2">
+              <input type="radio" className="accent-[#006afe] w-5" />{" "}
+              <div>
+                <p>{item.accountNumber}</p>
+                <p className="text-xs">Account Number</p>
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <div className="w-full flex justify-center items-center h-20">
+          <p className="text-slate-500 font-semibold">Bank detail not found!</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default BankInfo;

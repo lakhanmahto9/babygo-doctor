@@ -66,6 +66,7 @@ const EditBank = ({closeForm, data}) => {
                 onChange={handleInputChange}
                 type="text"
                 placeholder="Holder Name"
+                required
                 className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
               />
             </div>
@@ -78,6 +79,7 @@ const EditBank = ({closeForm, data}) => {
                 name="bankName"
                 value={inputValue.bankName}
                 onChange={handleInputChange}
+                required
                 type="text"
                 placeholder="Bank Name"
                 className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
@@ -94,6 +96,7 @@ const EditBank = ({closeForm, data}) => {
                 name="branchName"
                 value={inputValue.branchName}
                 onChange={handleInputChange}
+                required
                 type="text"
                 placeholder="Branch Name"
                 className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
@@ -109,6 +112,7 @@ const EditBank = ({closeForm, data}) => {
                 name="ifscCode"
                 value={inputValue.ifscCode}
                 onChange={handleInputChange}
+                required
                 placeholder="IFSC Code"
                 className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
               />
@@ -125,6 +129,7 @@ const EditBank = ({closeForm, data}) => {
               value={inputValue.accountNumber}
               onChange={handleInputChange}
               placeholder="Account Number"
+              required
               className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
             />
           </div>

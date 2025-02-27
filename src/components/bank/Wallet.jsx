@@ -4,6 +4,8 @@ import { CurrencyRupee } from "@mui/icons-material";
 import { WalletIcon } from "../../assets/icons/Icons";
 import { useSelector } from "react-redux";
 import { useThemeColors } from "../../utils/useThemeColor";
+import UpiInfo from "./selectupiorbank/UpiInfo";
+import BankInfo from "./selectupiorbank/BankInfo";
 
 const Wallet = () => {
   const isDarkEnabled = useSelector((state) => state.darkmode.dark);
@@ -79,18 +81,9 @@ const Wallet = () => {
                 </div>
                 <div className="p-4">
                   {selectAccount ? (
-                    <div className="flex flex-col gap-1">
-                      <div className="flex gap-2">
-                        <input type="radio" className="accent-[#006afe] w-5" />{" "}
-                        <p>7004001861@ybl</p>
-                      </div>
-                      <div className="flex gap-2">
-                        <input type="radio" className="accent-[#006afe] w-5" />{" "}
-                        <p>7004001865@axl</p>
-                      </div>
-                    </div>
+                    <UpiInfo/>
                   ) : (
-                    <div>bank</div>
+                    <BankInfo/>
                   )}
                 </div>
               </div>
