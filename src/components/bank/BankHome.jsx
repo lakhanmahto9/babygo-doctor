@@ -40,7 +40,7 @@ const BankHome = ({ children }) => {
                     ${pathname === item.path 
                       ? isDarkEnabled 
                         ? "bg-[#040836] border border-gray-600"  // Dark mode color
-                        : "bg-[#fbf5ff] border"  // Light mode color
+                        : "bg-[#f5faff] border"  // Light mode color
                       : isDarkEnabled 
                         ? "hover:bg-gray-700"  // Dark mode hover
                         : "hover:bg-gray-100"  // Light mode hover
