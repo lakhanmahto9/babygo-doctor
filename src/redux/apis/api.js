@@ -80,3 +80,53 @@ export const doctorRegister = (payload) => {
       },
     });
   };
+
+  export const addBankDetailsApi = (payload) => {
+    return axios.post(`${BASE_URL}/doctor/add-bank-details`,payload, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };
+
+  export const editBankDetailsApi = (payload) => {
+    console.log(payload)
+    return axios.post(`${BASE_URL}/doctor/edit-bank-details/${payload.id}`,payload.value, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };
+
+  export const fetchBankDetailsApi = () => {
+    return axios.get(`${BASE_URL}/doctor/fetch-bank-details`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };
+
+  export const addUpiDetailsApi = (payload) => {
+    return axios.post(`${BASE_URL}/doctor/add-upi-details`,payload, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };
+
+  export const editUpiDetailsApi = (payload) => {
+    console.log(payload)
+    return axios.post(`${BASE_URL}/doctor/edit-upi-details/${payload.id}`,payload, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };
+
+  export const fetchUpiDetailsApi = () => {
+    return axios.get(`${BASE_URL}/doctor/fetch-upi-details`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    });
+  };

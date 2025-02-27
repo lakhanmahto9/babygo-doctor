@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { AddBankDetails } from "../../redux/slice/addBankDetailSlice";
+import { EditBankDetails } from "../../redux/slice/addBankDetailSlice";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
 
-const AddBankForm = ({ closeForm }) => {
+const EditBank = ({closeForm, data}) => {
+    console.log(data)
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState({
-    name: "",
-    branchName: "",
-    bankName: "",
-    ifscCode: "",
-    accountNumber: "",
+    name: data.name || "",
+    branchName: data.branchName || "",
+    bankName: data.bankName || "",
+    ifscCode: data.ifscCode || "",
+    accountNumber: data.accountNumber || "",
   });
   const [spin, setSpin] = useState(false);
 
@@ -26,30 +27,29 @@ const AddBankForm = ({ closeForm }) => {
     e.preventDefault();
     setSpin(true);
     try {
-      const result = await dispatch(AddBankDetails(inputValue));
+        let payloadData = {
+            id:data._id,
+            value:inputValue
+        }
+      const result = await dispatch(EditBankDetails(payloadData));
       console.log(result.payload);
       if (result.payload?.data?.success) {
         setSpin(false);
         toast.success(result.payload.data.message);
         closeForm();
       } else {
+        setSpin(false)
         toast.warning(result.payload.message);
-        setSpin(false);
       }
     } catch (error) {
+        setSpin(false)
       console.log(error);
     }
   };
   return (
     <div className="w-full">
-      <div className="p-4">
-        <p className="text-[#006afe] text-sm font-semibold">
-          ADD NEW BANK DETAIL
-        </p>
-      </div>
-      <hr />
-
-      <div className="bg-[#f5faff] p-4 w-full">
+      <p>Edit Bank Details</p>
+      <div className="bg-[#f5faff] border p-4 my-4">
         <form
           onSubmit={handleSubmit}
           className="w-full sm:w-2/3 flex flex-col gap-3"
@@ -149,4 +149,4 @@ const AddBankForm = ({ closeForm }) => {
   );
 };
 
-export default AddBankForm;
+export default EditBank;

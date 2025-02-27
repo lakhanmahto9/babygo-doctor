@@ -22,7 +22,7 @@ const BankHome = ({ children }) => {
           <p className="text-white font-semibold">Wallet</p>
         </div>
         <div className="w-full p-4 flex flex-col md:flex-row gap-4">
-          <div className={`w-full md:w-1/3 h-auto rounded-md border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.background,color:colors.text}}>
+          <div className={`w-full md:w-1/3 h-auto max-h-72 rounded-md border ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.background,color:colors.text}}>
             <p className="font-bold p-4" >Wallet & Account</p>
             {/* <hr /> */}
             <div className={`border ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
