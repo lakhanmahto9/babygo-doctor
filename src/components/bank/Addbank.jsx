@@ -5,6 +5,8 @@ import AddBankForm from "./AddBankForm";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Menu, MenuItem } from "@mui/material";
 import EditBank from "./EditBank";
+import { DeleteBankDetails } from "../../redux/slice/addBankDetailSlice";
+import { toast } from "react-toastify";
 
 
 const Addbank = () => {
@@ -39,6 +41,19 @@ const Addbank = () => {
     setSelectedBankId(id);
   };
 
+  const deleteBankDetails = async (id) =>{
+    try {
+      const result = await dispatch(DeleteBankDetails(id));
+      if(result.payload?.data?.data.success){
+        toast.success(result.payload?.data?.data.message)
+      }else{
+        toast.success(result.payload?.data?.message)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <BankHome>
       <div className="w-full border rounded-sm p-4">
@@ -68,10 +83,10 @@ const Addbank = () => {
               {item._id !== selectedBankId ? (
                 <div className="flex w-full">
                   <div className="w-4/5">
-                    <p className="text-xs text-slate-600">
+                    <p className="text-sm text-slate-600">
                       Account number : {item.accountNumber}
                     </p>
-                    <p className="text-xs text-slate-600">
+                    <p className="text-sm text-slate-600">
                       Branch Name : {item.branchName}
                     </p>
                   </div>
@@ -102,7 +117,7 @@ const Addbank = () => {
                       <MenuItem onClick={() => openEditForm(item._id)}>
                         Edit
                       </MenuItem>
-                      <MenuItem onClick={handleClose}>Delete</MenuItem>
+                      <MenuItem onClick={()=>deleteBankDetails(item._id)}>Delete</MenuItem>
                     </Menu>
                   </div>
                 </div>

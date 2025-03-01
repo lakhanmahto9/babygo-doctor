@@ -1,15 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const UpiInfo = () => {
+const UpiInfo = ({withdrawType}) => {
   const upi = useSelector((state) => state.upi?.upi || []);
   return (
     <div className="w-full">
-      {upi && upi.length > 0 ? (
+      {upi.length > 0 ? (
         upi.map((item, index) => (
-          <div className="flex flex-col gap-1" key={index}>
+          <div className="flex flex-col gap-1 bg-blue-50 p-4 rounded-lg my-1" key={index}>
             <div className="flex gap-2">
-              <input type="radio" className="accent-[#006afe] w-5" />{" "}
+              <input type="radio" name="upi" onChange={()=>withdrawType(item)} className="accent-[#006afe] w-5" />{" "}
               <p>{item.upi}</p>
             </div>
           </div>

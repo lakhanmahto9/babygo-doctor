@@ -43,7 +43,7 @@ const Information = () => {
             <WalletIcon color="white" width="20" height="20" />
             <div className="flex justify-center items-center">
               <CurrencyRupee sx={{ width: 14, color: "white" }} />
-              <p className="text-white text-sm font-semibold">1009</p>
+              <p className="text-white text-sm font-semibold">{auth?.wallet}</p>
             </div>
           </div>
           <p className="text-xs mt-2">Available Balance</p>

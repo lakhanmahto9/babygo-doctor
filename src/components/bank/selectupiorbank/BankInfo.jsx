@@ -1,15 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const BankInfo = () => {
+const BankInfo = ({withdrawType}) => {
   const bank = useSelector((state) => state.bank?.bank || []);
   return (
     <div className="w-full">
-      {bank && bank.length > 0 ? (
+      {bank.length > 0 ? (
         bank.map((item, index) => (
-          <div className="flex flex-col gap-1" key={index}>
+          <div className="flex flex-col gap-1 bg-blue-50 p-4 rounded-lg my-1" key={index}>
             <div className="flex gap-2">
-              <input type="radio" className="accent-[#006afe] w-5" />{" "}
+              <input type="radio" onChange={()=>withdrawType(item)} name="bank" className="accent-[#006afe] w-5" />{" "}
               <div>
                 <p>{item.accountNumber}</p>
                 <p className="text-xs">Account Number</p>

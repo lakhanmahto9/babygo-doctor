@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   addBankDetailsApi,
+  deleteBankApi,
   editBankDetailsApi,
   fetchBankDetailsApi,
 } from "../apis/api";
@@ -40,6 +41,20 @@ export const FetchBankDetails = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response?.data || { message: "Bank fetch failed" }
+      );
+    }
+  }
+);
+
+export const DeleteBankDetails = createAsyncThunk(
+  "bank/delete",
+  async (id, thunkAPI) => {
+    try {
+      const data = await deleteBankApi(id);
+      return { id, data };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data || { message: "Delete failed" }
       );
     }
   }
@@ -98,6 +113,20 @@ const multipleBankSlice = createSlice({
         }
       })
       .addCase(EditBankDetails.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+
+      // Delete
+      .addCase(DeleteBankDetails.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(DeleteBankDetails.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.bank = state.bank.filter((item) => item._id !== action.payload.id);
+      })
+      .addCase(DeleteBankDetails.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

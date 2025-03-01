@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import BankHome from "./BankHome";
 import AddUPiForm from "./AddUPiForm";
 import { AddIcon, VerticalThreeDotIcon } from "../../assets/icons/Icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Menu, MenuItem } from "@mui/material";
 import UpiEditForm from "./UpiEditForm";
+import { DeleteUpiDetails } from "../../redux/slice/addUpiDetailSlice";
+import { toast } from "react-toastify";
 
 
 const Addupi = () => {
   const upi = useSelector((state)=> state.upi?.upi || []);
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedBankId, setSelectedBankId] = useState("");
@@ -34,6 +37,19 @@ const Addupi = () => {
     handleClose();
     setSelectedBankId(id);
   };
+  const deleteupiId = async (id) =>{
+      try {
+        const result = await dispatch(DeleteUpiDetails(id));
+        if(result.payload?.data?.data.success){
+          toast.success(result.payload?.data?.data.message)
+        }else{
+          toast.success(result.payload?.data?.message)
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
  
   return (
     <BankHome>
@@ -60,8 +76,8 @@ const Addupi = () => {
                 {item._id !== selectedBankId ? (
                   <div className="flex w-full">
                     <div className="w-4/5">
-                      <p className="text-xs text-slate-600">
-                        Account number : {item.upi}
+                      <p className="text-sm text-slate-600">
+                        UPI Number : {item.upi}
                       </p>
                     </div>
                     <div className="w-1/5 flex justify-end cursor-pointer">
@@ -91,7 +107,7 @@ const Addupi = () => {
                         <MenuItem onClick={() => openEditForm(item._id)}>
                           Edit
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>Delete</MenuItem>
+                        <MenuItem onClick={()=>deleteupiId(item._id)}>Delete</MenuItem>
                       </Menu>
                     </div>
                   </div>

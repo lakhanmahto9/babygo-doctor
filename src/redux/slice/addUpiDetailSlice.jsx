@@ -1,5 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addUpiDetailsApi, editUpiDetailsApi, fetchUpiDetailsApi } from "../apis/api";
+import {
+  addUpiDetailsApi,
+  deleteUpiApi,
+  editUpiDetailsApi,
+  fetchUpiDetailsApi,
+} from "../apis/api";
 
 export const AddUpiDetails = createAsyncThunk(
   "upi/add",
@@ -24,6 +29,20 @@ export const EditUpiDetails = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response?.data || { message: "UPI edited failed" }
+      );
+    }
+  }
+);
+
+export const DeleteUpiDetails = createAsyncThunk(
+  "upi/delete",
+  async (id, thunkAPI) => {
+    try {
+      const data = await deleteUpiApi(id);
+      return { id, data };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response?.data || { message: "Delete failed" }
       );
     }
   }
@@ -97,6 +116,22 @@ const multipleUpiSlice = createSlice({
         }
       })
       .addCase(EditUpiDetails.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+
+      // Delete
+      .addCase(DeleteUpiDetails.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(DeleteUpiDetails.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.upi = state.upi.filter(
+          (item) => item._id !== action.payload.id
+        );
+      })
+      .addCase(DeleteUpiDetails.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

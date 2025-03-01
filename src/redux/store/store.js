@@ -8,6 +8,8 @@ import getBookApointmentSlice from "../slice/getBookApointmentSlice";
 import uploadCertificateSlice from "../slice/addAndUpdateCertificateSlice";
 import multipleBankSlice from "../slice/addBankDetailSlice";
 import multipleUpiSlice from "../slice/addUpiDetailSlice";
+import withdrawByUPISlice from "../slice/withdrawSlice";
+import withdrawByBankSlice from "../slice/withdrawBankSlice";
 
 const persistConfig = {
   key: "root",
@@ -39,6 +41,14 @@ const persistUpiDetails = persistReducer(
   { ...persistConfig, key: "upi" },
   multipleUpiSlice
 );
+const persistUpiWithdraw = persistReducer(
+  { ...persistConfig, key: "upiwithdraw" },
+  withdrawByUPISlice
+);
+const persistBankWithdraw = persistReducer(
+  { ...persistConfig, key: "bankwithdraw" },
+  withdrawByBankSlice
+);
 const store = configureStore({
   reducer: {
     darkmode: persistedDarkModeReducer,
@@ -48,6 +58,8 @@ const store = configureStore({
     certificate: persistCertificate,
     bank: persistBankDetails,
     upi: persistUpiDetails,
+    upiwithdraw:persistUpiWithdraw,
+    bankwithdraw:persistBankWithdraw
   },
 });
 
