@@ -97,7 +97,8 @@ const Wallet = () => {
             Wallet & Withdraw
           </p>
         </div>
-        <hr />
+        {/* <hr /> */}
+        <div className={`border ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
         <div className="w-full flex flex-col md:flex-row p-4 gap-4">
           <div
             className={`w-full md:w-1/2 h-32 border rounded-2xl shadow-md flex flex-col justify-center items-center ${
@@ -121,9 +122,10 @@ const Wallet = () => {
             style={{ background: colors.primary, color: colors.text }}
           >
             <div className="p-4">
-              <p className="text-sm text-slate-500 font-semibold">Withdraw</p>
+              <p className="text-sm  font-semibold">Withdraw</p>
             </div>
-            <hr />
+            {/* <hr /> */}
+            <div className={`border ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
             <div className="">
               <form onSubmit={handleSubmit} className="p-4 w-full flex">
                 <div className="w-3/5 relative">
@@ -137,8 +139,8 @@ const Wallet = () => {
                         setAmount(value);
                       }
                     }}
-                    className={`w-full h-12 rounded-l-md px-6 outline-[#006afe] border ${
-                      isDarkEnabled ? "border-gray-600" : " border-slate-300"
+                    className={`w-full h-12 rounded-l-md px-6 border ${
+                      isDarkEnabled ? "border-gray-600" : " border-slate-300 outline-[#006afe]"
                     }`}
                     style={{ background: colors.background }}
                   />
@@ -157,7 +159,8 @@ const Wallet = () => {
                   )}
                 </button>
               </form>
-              <hr />
+              {/* <hr /> */}
+              <div className={`border ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
               <div className="w-full">
                 <div className="w-full h-12 flex">
                   <div

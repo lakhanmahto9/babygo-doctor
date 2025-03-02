@@ -7,9 +7,12 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import EditBank from "./EditBank";
 import { DeleteBankDetails } from "../../redux/slice/addBankDetailSlice";
 import { toast } from "react-toastify";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 
 const Addbank = () => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const bank = useSelector((state) => state.bank?.bank || []);
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -56,13 +59,13 @@ const Addbank = () => {
 
   return (
     <BankHome>
-      <div className="w-full border rounded-sm p-4">
+      <div className={`w-full border rounded-sm p-4 ${isDarkEnabled ? "border-gray-600" :""}`} style={{background:colors.background}}>
         <p className="font-semibold text-slate-500 mb-4">Manage Bank Details</p>
 
         {!open ? (
           <div
             onClick={openAddBankForm}
-            className="p-4 flex items-center gap-4 cursor-pointer border"
+            className={`p-4 flex items-center gap-4 cursor-pointer border ${isDarkEnabled ? "border-gray-600" : ""}`}
           >
             <AddIcon color="#006afe" width="18" height="18" />
             <p className="text-sm font-bold text-[#006afe]">
@@ -70,7 +73,7 @@ const Addbank = () => {
             </p>
           </div>
         ) : (
-          <div className="w-full border">
+          <div className={`w-full border ${isDarkEnabled ? "border-gray-600" : ""}`}>
             <AddBankForm closeForm={closeForm} />
           </div>
         )}
@@ -79,14 +82,14 @@ const Addbank = () => {
         {bank &&
           bank.length > 0 &&
           bank.map((item) => (
-            <div key={item._id} className="border p-4">
+            <div key={item._id} className={`border p-4 ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.primary,color:colors.text}}>
               {item._id !== selectedBankId ? (
                 <div className="flex w-full">
                   <div className="w-4/5">
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm">
                       Account number : {item.accountNumber}
                     </p>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm">
                       Branch Name : {item.branchName}
                     </p>
                   </div>
@@ -102,7 +105,7 @@ const Addbank = () => {
                       }
                     >
                       <VerticalThreeDotIcon
-                        color="#000"
+                        color={colors.text}
                         width="18"
                         height="18"
                       />

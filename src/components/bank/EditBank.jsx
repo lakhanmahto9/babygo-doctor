@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { EditBankDetails } from "../../redux/slice/addBankDetailSlice";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+import { useThemeColors } from "../../utils/useThemeColor";
 
-const EditBank = ({closeForm, data}) => {
-    console.log(data)
+const EditBank = ({ closeForm, data }) => {
+  // console.log(data)
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState({
     name: data.name || "",
@@ -27,10 +30,10 @@ const EditBank = ({closeForm, data}) => {
     e.preventDefault();
     setSpin(true);
     try {
-        let payloadData = {
-            id:data._id,
-            value:inputValue
-        }
+      let payloadData = {
+        id: data._id,
+        value: inputValue
+      }
       const result = await dispatch(EditBankDetails(payloadData));
       console.log(result.payload);
       if (result.payload?.data?.success) {
@@ -42,14 +45,14 @@ const EditBank = ({closeForm, data}) => {
         toast.warning(result.payload.message);
       }
     } catch (error) {
-        setSpin(false)
+      setSpin(false)
       console.log(error);
     }
   };
   return (
     <div className="w-full">
       <p>Edit Bank Details</p>
-      <div className="bg-[#f5faff] border p-4 my-4">
+      <div className={`p-4 my-4 ${isDarkEnabled ? "" : "border bg-[#f5faff]"}`}>
         <form
           onSubmit={handleSubmit}
           className="w-full sm:w-2/3 flex flex-col gap-3"
@@ -67,7 +70,8 @@ const EditBank = ({closeForm, data}) => {
                 type="text"
                 placeholder="Holder Name"
                 required
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full  border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300 outline-blue-600"}`}
+                style={{ background: colors.background }}
               />
             </div>
             <div>
@@ -82,7 +86,8 @@ const EditBank = ({closeForm, data}) => {
                 required
                 type="text"
                 placeholder="Bank Name"
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full  border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300 outline-blue-600"}`}
+                style={{ background: colors.background }}
               />
             </div>
           </div>
@@ -99,7 +104,8 @@ const EditBank = ({closeForm, data}) => {
                 required
                 type="text"
                 placeholder="Branch Name"
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full  border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300 outline-blue-600"}`}
+                style={{ background: colors.background }}
               />
             </div>
             <div>
@@ -114,7 +120,8 @@ const EditBank = ({closeForm, data}) => {
                 onChange={handleInputChange}
                 required
                 placeholder="IFSC Code"
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full  border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300 outline-blue-600"}`}
+                style={{ background: colors.background }}
               />
             </div>
           </div>
@@ -130,13 +137,14 @@ const EditBank = ({closeForm, data}) => {
               onChange={handleInputChange}
               placeholder="Account Number"
               required
-              className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+              className={`h-12 w-full  border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300 outline-blue-600"}`}
+              style={{ background: colors.background }}
             />
           </div>
           <div className="flex gap-4">
             <button
               type="submit"
-              className="text-sm text-white bg-[#006afe] font-bold px-8 py-4"
+              className="text-sm text-white bg-[#006afe] font-bold rounded-md px-8 py-4"
             >
               {spin ? <CircularProgress color="white" size={18} /> : "SUBMIT"}
             </button>

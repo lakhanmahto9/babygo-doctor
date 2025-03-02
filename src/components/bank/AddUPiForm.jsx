@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AddUpiDetails } from "../../redux/slice/addUpiDetailSlice";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const AddUPiForm = ({closeForm}) => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const dispatch = useDispatch();
   const [upi, setUpi] = useState("");
   const [spin, setSpin] = useState(false);
@@ -34,9 +37,9 @@ const AddUPiForm = ({closeForm}) => {
           ADD NEW UPI
         </p>
       </div>
-      <hr />
-
-      <div className="bg-[#f5faff] p-4 w-full">
+      {/* <hr /> */}
+       <div className={`border ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
+      <div className={`p-4 w-full ${isDarkEnabled ? "" : "bg-[#f5faff]"}`}>
         <form onSubmit={handleSubmit} className="w-full sm:w-2/3 flex flex-col gap-3">
           <div className="w-full">
             <label htmlFor="upi" className="text-sm text-slate-400">
@@ -50,13 +53,14 @@ const AddUPiForm = ({closeForm}) => {
               type="text"
               placeholder="UPI ID"
               required
-              className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+              className={`h-12 w-full outline-blue-600 border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300"}`}
+              style={{background:colors.primary}}
             />
           </div>
           <div className="flex gap-4">
             <button
               type="submit"
-              className="text-sm text-white bg-[#006afe] font-bold px-8 py-4"
+              className="text-sm text-white bg-[#006afe] rounded-md font-bold px-8 py-4"
             >
               {spin? <CircularProgress /> :" SUBMIT"}
             </button>

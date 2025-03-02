@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment/moment";
 import { FetchUpiWithdraw } from "../../redux/slice/withdrawSlice";
 import { FetchBankAmount } from "../../redux/slice/withdrawBankSlice";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const WithdrawalHistory = () => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const upi = useSelector((state) => state.upiwithdraw?.upi || []);
   const bank = useSelector((state) => state.bankwithdraw?.bank || []);
   const [selectedDate, setSelectedDate] = useState("");
@@ -28,8 +31,8 @@ const WithdrawalHistory = () => {
   );
   return (
     <BankHome>
-      <div className="w-full border rounded-md">
-        <div className="w-full h-14 border-b flex justify-between items-center px-4 ">
+      <div className={`w-full border rounded-md ${isDarkEnabled ? "border-gray-600" : "" }`} style={{background:colors.cardBg,color:colors.text}}>
+        <div className={`w-full h-14 border-b flex justify-between items-center px-4 ${isDarkEnabled ? "border-gray-600" : ""}`}>
           <p className="text-sm font-semibold text-slate-500">
             Withdrawal History
           </p>
@@ -38,7 +41,8 @@ const WithdrawalHistory = () => {
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="text-sm border px-2 py-1 rounded-md"
+              className={`text-sm border px-2 py-1 rounded-md ${isDarkEnabled ? "border-gray-600" : ""}`}
+              style={{background:colors.primary,colorScheme: isDarkEnabled ? "dark" : "light",}}
             />
           </div>
         </div>
@@ -47,7 +51,8 @@ const WithdrawalHistory = () => {
             filteredUpi.map((item, index) => (
               <div
                 key={index}
-                className="w-full sm:w-[32%] h-auto border rounded-xl p-2 shadow-md"
+                className={`w-full sm:w-[32%] h-auto border rounded-xl p-2 shadow-md ${isDarkEnabled ? "border-gray-600" : ""}`}
+                style={{background:colors.primary}}
               >
                 <div className="flex justify-between">
                   <p className="text-xs font-semibold">UPI ID:- {item.upi}</p>{" "}
@@ -65,7 +70,8 @@ const WithdrawalHistory = () => {
             filteredBank.map((item, index) => (
               <div
                 key={index}
-                className="w-full sm:w-[32%] h-auto border rounded-xl p-2 shadow-md"
+                className={`w-full sm:w-[32%] h-auto border rounded-xl p-2 shadow-md ${isDarkEnabled ? "border-gray-600" : ""}`}
+                style={{background:colors.primary}}
               >
                 <div className="flex justify-between">
                   <p className="text-xs font-semibold">

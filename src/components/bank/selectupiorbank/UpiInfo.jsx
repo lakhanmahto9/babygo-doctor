@@ -1,13 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useThemeColors } from "../../../utils/useThemeColor";
 
 const UpiInfo = ({withdrawType}) => {
+  const isDarkEnabled = useSelector((state)=> state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled);
   const upi = useSelector((state) => state.upi?.upi || []);
   return (
     <div className="w-full">
       {upi.length > 0 ? (
         upi.map((item, index) => (
-          <div className="flex flex-col gap-1 bg-blue-50 p-4 rounded-lg my-1" key={index}>
+          <div className={`flex flex-col gap-1 p-4 rounded-lg my-1 ${isDarkEnabled ? "bg-[#101c44]" : "bg-blue-50"}`} key={index}>
             <div className="flex gap-2">
               <input type="radio" name="upi" onChange={()=>withdrawType(item)} className="accent-[#006afe] w-5" />{" "}
               <p>{item.upi}</p>

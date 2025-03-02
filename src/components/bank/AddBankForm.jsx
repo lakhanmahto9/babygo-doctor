@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AddBankDetails } from "../../redux/slice/addBankDetailSlice";
 import { toast } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+import { useThemeColors } from "../../utils/useThemeColor";
 
 const AddBankForm = ({ closeForm }) => {
+  const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const colors = useThemeColors(isDarkEnabled)
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState({
     name: "",
@@ -44,12 +47,13 @@ const AddBankForm = ({ closeForm }) => {
     <div className="w-full">
       <div className="p-4">
         <p className="text-[#006afe] text-sm font-semibold">
-          ADD NEW BANK DETAIL
+          ADD NEW BANK DETAILS
         </p>
       </div>
-      <hr />
+      {/* <hr /> */}
+      <div className={`border ${isDarkEnabled ? "border-gray-600" : ""}`}></div>
 
-      <div className="bg-[#f5faff] p-4 w-full">
+      <div className={`p-4 w-full ${isDarkEnabled ? "bg-[#040836]" : "bg-[#f5faff]"}`}>
         <form
           onSubmit={handleSubmit}
           className="w-full sm:w-2/3 flex flex-col gap-3"
@@ -67,7 +71,8 @@ const AddBankForm = ({ closeForm }) => {
                 required
                 type="text"
                 placeholder="Holder Name"
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full outline-blue-600 border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300"}`}
+                style={{ background: colors.background }}
               />
             </div>
             <div>
@@ -82,7 +87,8 @@ const AddBankForm = ({ closeForm }) => {
                 required
                 type="text"
                 placeholder="Bank Name"
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full outline-blue-600 border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300"}`}
+                style={{ background: colors.background }}
               />
             </div>
           </div>
@@ -99,7 +105,8 @@ const AddBankForm = ({ closeForm }) => {
                 type="text"
                 placeholder="Branch Name"
                 required
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full outline-blue-600 border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300"}`}
+                style={{ background: colors.background }}
               />
             </div>
             <div>
@@ -114,7 +121,8 @@ const AddBankForm = ({ closeForm }) => {
                 onChange={handleInputChange}
                 placeholder="IFSC Code"
                 required
-                className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+                className={`h-12 w-full outline-blue-600 border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300"}`}
+                style={{ background: colors.background }}
               />
             </div>
           </div>
@@ -130,13 +138,14 @@ const AddBankForm = ({ closeForm }) => {
               onChange={handleInputChange}
               placeholder="Account Number"
               required
-              className="h-12 w-full outline-blue-600 border border-slate-300 px-4"
+              className={`h-12 w-full outline-blue-600 border px-4 ${isDarkEnabled ? "border-gray-600" : "border-slate-300"}`}
+              style={{ background: colors.background }}
             />
           </div>
           <div className="flex gap-4">
             <button
               type="submit"
-              className="text-sm text-white bg-[#006afe] font-bold px-8 py-4"
+              className="text-sm text-white bg-[#006afe] rounded-md font-bold px-8 py-4"
             >
               {spin ? <CircularProgress color="white" size={18} /> : "SUBMIT"}
             </button>
