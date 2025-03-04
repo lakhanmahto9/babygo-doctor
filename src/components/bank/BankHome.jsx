@@ -14,10 +14,13 @@ const BankHome = ({ children }) => {
   const changePage = (link) => {
     navigate(link);
   };
+  const gotohome = () =>{
+    navigate("/")
+  }
   return (
     <Layout>
       <div className="w-full relative">
-        <div className={`w-full h-14 sticky top-0  shadow-sm flex justify-start items-center px-4 gap-4  ${isDarkEnabled ? "bg-[#101c44]" : "bg-[#006afe] border-b"}`}>
+        <div onClick={gotohome} className={`w-full h-14 sticky top-0  shadow-sm flex justify-start items-center px-4 gap-4  ${isDarkEnabled ? "bg-[#101c44]" : "bg-[#006afe] border-b"}`}>
           <BackIcon color="#fff" width="24" height="24" />{" "}
           <p className="text-white font-semibold">Wallet</p>
         </div>

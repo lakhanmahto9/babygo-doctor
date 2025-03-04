@@ -1,19 +1,24 @@
 import { CurrencyRupee } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect } from "react";
 import { WalletIcon } from "../../assets/icons/Icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useThemeColors } from "../../utils/useThemeColor";
 import { useNavigate } from "react-router-dom";
+import { FetchConsultantData } from "../../redux/slice/authSlice";
 
 const Information = () => {
   const apointment = useSelector((state) => state.apointment?.apointment || []);
   const isDarkEnabled = useSelector((state) => state.darkmode.dark);
+  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth?.user?.data);
   const colors = useThemeColors(isDarkEnabled);
   const navigate = useNavigate();
   const gotowallet = () =>{
     navigate("/wallet")
   }
+  useEffect(()=>{
+     dispatch(FetchConsultantData());
+  },[])
   return (
     <div className="w-full mt-1">
       <div className="md:px-2">
