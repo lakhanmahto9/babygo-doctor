@@ -63,7 +63,7 @@ const Profile = ({ children }) => {
                 </div>
               </div>
               <div className="p-1 w-full">
-                <div
+                {/* <div
                   onClick={()=>pageswithc("/profile/degree-and-certification")}
                   className={`w-full h-10 flex justify-center items-center 
                     ${pathname === "/profile/degree-and-certification"
@@ -76,7 +76,7 @@ const Profile = ({ children }) => {
                     rounded-md cursor-pointer`}
                 >
                   <p className="text-xs text-white font-semibold">Experience & Certification</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
