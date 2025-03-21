@@ -34,6 +34,12 @@
   background: #555; /* Darker color on hover */
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+
+
 
 
 

@@ -10,7 +10,7 @@ const Profile = ({ children }) => {
   const colors= useThemeColors(isDarkEnabled);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  console.log(pathname);
+  // console.log(pathname);
   const pageswithc = (link) =>{
     navigate(link);
   }
@@ -48,9 +48,9 @@ const Profile = ({ children }) => {
               </div>
               <div className="p-1 w-full">
                 <div
-                  onClick={()=>pageswithc("/profile/add-apointment-address")}
+                  onClick={()=>pageswithc("/profile/doctor-add-doctor")}
                   className={`w-full h-10 flex justify-center items-center 
-                    ${pathname === "/profile/add-apointment-address"
+                    ${pathname === "/profile/doctor-add-doctor"
                       ? isDarkEnabled 
                         ? "bg-[#040836]"  // Dark mode background color
                         : "bg-[#006afe]"  // Light mode background color
@@ -59,7 +59,7 @@ const Profile = ({ children }) => {
                         : "bg-gray-400"}  // Light mode default background
                     rounded-md cursor-pointer`}
                 >
-                  <p className="text-xs text-white font-semibold">Appointment Address</p>
+                  <p className="text-xs text-white font-semibold">Add doctor</p>
                 </div>
               </div>
               <div className="p-1 w-full">

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard/Dashboard";
 import Home from "./components/Home";
 import Myinformation from "./components/profile/Myinformation";
-import ApointmentAddressForm from "./components/profile/ApointmentAddressForm";
+// import ApointmentAddressForm from "./components/profile/ApointmentAddressForm";
 import ApointmentHome from "./components/apointment/ApointmentHome";
 import IsAuthenticated from "./components/middleware/IsAuthenticated";
 import Pagenotfound from "./components/apointment/Pagenotfound";
@@ -13,6 +13,7 @@ import Addbank from "./components/bank/Addbank";
 import Addupi from "./components/bank/Addupi";
 import WithdrawalHistory from "./components/bank/WithdrawalHistory";
 import Wallet from "./components/bank/Wallet";
+import Doctor from "./components/profile/Doctor";
 
 function App() {
   return (
@@ -46,10 +47,10 @@ function App() {
           }
         />
         <Route
-          path="/profile/add-apointment-address"
+          path="/profile/doctor-add-doctor"
           element={
             <IsAuthenticated>
-              <ApointmentAddressForm />
+              <Doctor />
             </IsAuthenticated>
           }
         />

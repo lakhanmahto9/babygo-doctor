@@ -33,33 +33,33 @@ export const updateProfileInformationApi = (payload) => {
   });
 };
 
-export const addDoctorMultipleAddressApi = (payload) => {
-  return axios.post(`${BASE_URL}/doctor/add-doctor-multiple-address`, payload, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-    },
-  });
-};
+// export const addDoctorMultipleAddressApi = (payload) => {
+//   return axios.post(`${BASE_URL}/doctor/add-doctor-multiple-address`, payload, {
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+//     },
+//   });
+// };
 
-export const getDoctorMultipleAddressApi = () => {
-  return axios.get(`${BASE_URL}/doctor/get-doctor-apointment-address`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-    },
-  });
-};
+// export const getDoctorMultipleAddressApi = () => {
+//   return axios.get(`${BASE_URL}/doctor/get-doctor-apointment-address`, {
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+//     },
+//   });
+// };
 
-export const editDoctorMultipleAddressApi = (payload) => {
-  return axios.post(
-    `${BASE_URL}/doctor/edit-doctor-apointment-address/${payload.id}`,
-    payload.item,
-    {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-      },
-    }
-  );
-};
+// export const editDoctorMultipleAddressApi = (payload) => {
+//   return axios.post(
+//     `${BASE_URL}/doctor/edit-doctor-apointment-address/${payload.id}`,
+//     payload.item,
+//     {
+//       headers: {
+//         Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+//       },
+//     }
+//   );
+// };
 
 export const getBookApointmentApi = () => {
   return axios.get(`${BASE_URL}/doctor/get-book-apointment`, {
@@ -195,5 +195,38 @@ export const fetchBankWithdrawApi = () => {
     },
   });
 };
+
+export const createDoctorApi = (payload) => {
+  return axios.post(`${BASE_URL}/doctor/save-doctor`,payload, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  });
+};
+
+export const fetchDoctorApi = () => {
+  return axios.get(`${BASE_URL}/doctor/get-doctor`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  });
+};
+
+export const updateDoctorApi = (payload) => {
+  console.log(payload)
+  return axios.post(`${BASE_URL}/doctor/update-doctor/${payload.id}`,payload, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+    },
+  });
+};
+
+// export const deleteDoctorApi = (payload) => {
+//   return axios.delete(`${BASE_URL}/doctor/delete-doctor/${payload}`, {
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+//     },
+//   });
+// };
 
 
