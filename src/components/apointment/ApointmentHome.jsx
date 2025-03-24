@@ -157,7 +157,6 @@ const ApointmentHome = () => {
                   <p className="text-sm text-slate-500">
                     {item.petOwnerAddress}
                   </p>
-                  
                 </div>
                 <div className="w-full sm:w-1/3 p-1 flex flex-col gap-2">
                   <div className="flex justify-between">
@@ -179,10 +178,13 @@ const ApointmentHome = () => {
                     )}
                   </div>
                   <p className="text-xs text-slate-500">
-                  {convertTo12HourFormat(item.schedules[0].startTime)} -{" "}
-                  {convertTo12HourFormat(item.schedules[0].endTime)}
+                    {convertTo12HourFormat(item.schedules[0].startTime)} -{" "}
+                    {convertTo12HourFormat(item.schedules[0].endTime)}
                   </p>
-                  <p className="text-xs text-slate-500"> Opening Days:- {item.schedules[0].selectedDays.join(", ")}</p>
+                  <p className="text-xs text-slate-500">
+                    {" "}
+                    Opening Days:- {item.schedules[0].selectedDays.join(", ")}
+                  </p>
                   <p className="text-sm text-slate-500 font-semibold">
                     Status - {item.status}
                   </p>
