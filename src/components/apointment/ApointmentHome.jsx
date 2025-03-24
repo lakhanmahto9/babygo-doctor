@@ -25,11 +25,11 @@ const ApointmentHome = () => {
     setOpen(true);
     setId(aptid);
   };
-  const openAcceptModal = (aptid,status) =>{
+  const openAcceptModal = (aptid, status) => {
     setOpenAccept(true);
-    setId(aptid)
-    setStatus(status)
-  }
+    setId(aptid);
+    setStatus(status);
+  };
   const handleClose = () => {
     setOpen(false);
   };
@@ -46,10 +46,21 @@ const ApointmentHome = () => {
   const gotohome = () => {
     navigate("/");
   };
+  const convertTo12HourFormat = (time) => {
+    if (!time) return "";
+    let [hour, minute] = time.split(":").map(Number);
+    let period = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12 || 12; // Convert 0 to 12 for 12 AM
+    return `${hour}:${minute.toString().padStart(2, "0")} ${period}`;
+  };
   return (
     <Layout>
       <div className="w-full relative">
-        <div className={`h-14 w-full sticky top-0 px-4 border shadow-md flex justify-between items-center ${isDarkEnabled ? "bg-[#101c44] border-gray-600" : "bg-[#006afe]"}`}>
+        <div
+          className={`h-14 w-full sticky top-0 px-4 border shadow-md flex justify-between items-center ${
+            isDarkEnabled ? "bg-[#101c44] border-gray-600" : "bg-[#006afe]"
+          }`}
+        >
           <div onClick={gotohome} className="flex gap-4">
             <BackIcon color="#fff" height="24" width="24" />
             <p className="text-white font-semibold hidden sm:block">
@@ -58,10 +69,12 @@ const ApointmentHome = () => {
           </div>
           <div className="flex justify-center items-center gap-4">
             <select
-              className={`border p-2 rounded-md outline-none  ${isDarkEnabled ? "bg-[#040836] border-gray-600":""}`}
+              className={`border p-2 rounded-md outline-none  ${
+                isDarkEnabled ? "bg-[#040836] border-gray-600" : ""
+              }`}
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              style={{color:colors.text}}
+              style={{ color: colors.text }}
             >
               <option value="">All Status</option>
               <option value="Pending">Pending</option>
@@ -72,7 +85,9 @@ const ApointmentHome = () => {
             <div>
               <input
                 type="date"
-                className={`border p-2 text-slate-400 rounded-md  ${isDarkEnabled ? "border-gray-600 bg-[#040836]" : ""}`}
+                className={`border p-2 text-slate-400 rounded-md  ${
+                  isDarkEnabled ? "border-gray-600 bg-[#040836]" : ""
+                }`}
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
                 style={{
@@ -101,7 +116,10 @@ const ApointmentHome = () => {
                       Appointment No :- {item?.apointmentNumber}
                     </p>
                     {item.status !== "Done" && item.status !== "Accept" && (
-                      <div onClick={() => openAcceptModal(item._id,item.status)} className="block md:hidden cursor-pointer">
+                      <div
+                        onClick={() => openAcceptModal(item._id, item.status)}
+                        className="block md:hidden cursor-pointer"
+                      >
                         <VerticalThreeDotIcon
                           color="#000"
                           width="16"
@@ -139,7 +157,7 @@ const ApointmentHome = () => {
                   <p className="text-sm text-slate-500">
                     {item.petOwnerAddress}
                   </p>
-                  <p className="text-sm text-slate-500">Jharkhand - 828306</p>
+                  
                 </div>
                 <div className="w-full sm:w-1/3 p-1 flex flex-col gap-2">
                   <div className="flex justify-between">
@@ -148,7 +166,10 @@ const ApointmentHome = () => {
                       {moment(item?.apointmentDate).format("MMM, DD-YYYY")}
                     </p>
                     {item.status !== "Done" && item.status !== "Accept" && (
-                      <div onClick={() => openAcceptModal(item._id,item.status)} className="hidden md:block cursor-pointer">
+                      <div
+                        onClick={() => openAcceptModal(item._id, item.status)}
+                        className="hidden md:block cursor-pointer"
+                      >
                         <VerticalThreeDotIcon
                           color="#000"
                           width="16"
@@ -157,6 +178,11 @@ const ApointmentHome = () => {
                       </div>
                     )}
                   </div>
+                  <p className="text-xs text-slate-500">
+                  {convertTo12HourFormat(item.schedules[0].startTime)} -{" "}
+                  {convertTo12HourFormat(item.schedules[0].endTime)}
+                  </p>
+                  <p className="text-xs text-slate-500"> Opening Days:- {item.schedules[0].selectedDays.join(", ")}</p>
                   <p className="text-sm text-slate-500 font-semibold">
                     Status - {item.status}
                   </p>
@@ -197,7 +223,12 @@ const ApointmentHome = () => {
         )}
       </div>
       <ConfirmModal id={id} open={open} handleClose={handleClose} />
-      <AcceptModal id={id} status={status} open={openAccept} handleClose={closeAccept} />
+      <AcceptModal
+        id={id}
+        status={status}
+        open={openAccept}
+        handleClose={closeAccept}
+      />
     </Layout>
   );
 };
