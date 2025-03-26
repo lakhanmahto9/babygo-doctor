@@ -27,7 +27,7 @@ const Dashboard = () => {
           </div>
 
           <Cards />
-          <ApointmentAddress />
+          {/* <ApointmentAddress /> */}
         </div>
         <div className="hidden md:block w-full md:w-1/4">
           <Information />
