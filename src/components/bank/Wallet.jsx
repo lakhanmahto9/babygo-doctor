@@ -93,7 +93,7 @@ const Wallet = () => {
         style={{ background: colors.background }}
       >
         <div className="p-4">
-          <p className="text-sm text-slate-500 font-semibold">
+          <p className={`text-sm font-semibold ${isDarkEnabled ? "text-slate-200" : "text-slate-500"}`}>
             Wallet & Withdraw
           </p>
         </div>

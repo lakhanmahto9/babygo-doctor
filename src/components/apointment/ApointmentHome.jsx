@@ -61,7 +61,7 @@ const ApointmentHome = () => {
             isDarkEnabled ? "bg-[#101c44] border-gray-600" : "bg-[#006afe]"
           }`}
         >
-          <div onClick={gotohome} className="flex gap-4">
+          <div onClick={gotohome} className="flex gap-4 cursor-pointer">
             <BackIcon color="#fff" height="24" width="24" />
             <p className="text-white font-semibold hidden sm:block">
               Appointment

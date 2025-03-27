@@ -57,7 +57,7 @@ const Addupi = () => {
   return (
     <BankHome>
       <div className={`w-full border rounded-sm p-4 ${isDarkEnabled ? "border-gray-600" : ""}`} style={{background:colors.cardBg}}>
-        <p className="font-semibold text-slate-500 mb-4">Manage UPI Details</p>
+        <p className={`font-semibold  mb-4 ${isDarkEnabled ? "text-gray-200" : "text-slate-500"}`}>Manage UPI Details</p>
         {!open ? (
           <div
             onClick={openAddBankForm}

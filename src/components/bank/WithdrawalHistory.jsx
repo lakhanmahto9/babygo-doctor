@@ -33,7 +33,7 @@ const WithdrawalHistory = () => {
     <BankHome>
       <div className={`w-full border rounded-md ${isDarkEnabled ? "border-gray-600" : "" }`} style={{background:colors.cardBg,color:colors.text}}>
         <div className={`w-full h-14 border-b flex justify-between items-center px-4 ${isDarkEnabled ? "border-gray-600" : ""}`}>
-          <p className="text-sm font-semibold text-slate-500">
+          <p className={`text-sm font-semibold  ${isDarkEnabled ? "text-slate-200" : "text-slate-500"}`}>
             Withdrawal History
           </p>
           <div className="flex gap-2 p-1">

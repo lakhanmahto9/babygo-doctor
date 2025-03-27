@@ -13,20 +13,19 @@ const Information = () => {
   const auth = useSelector((state) => state.auth?.user?.data);
   const colors = useThemeColors(isDarkEnabled);
   const navigate = useNavigate();
-  const gotowallet = () =>{
+  const gotowallet = () => {
     navigate("/wallet")
   }
-  useEffect(()=>{
-     dispatch(FetchConsultantData());
-  },[])
+  useEffect(() => {
+    dispatch(FetchConsultantData());
+  }, [])
   return (
     <div className="w-full mt-1">
       <div className="md:px-2">
         <div
-          className={`w-full rounded-2xl border  flex flex-col justify-center items-center p-4 ${
-            isDarkEnabled ? "border-gray-600" : ""
-          }`}
-          // style={{ background: colors.thirdCardBg, color: colors.text }}
+          className={`w-full rounded-2xl border  flex flex-col justify-center items-center p-4 ${isDarkEnabled ? "border-gray-600" : ""
+            }`}
+        // style={{ background: colors.thirdCardBg, color: colors.text }}
         >
           <img
             src={auth?.profile_pic || "/profile.png"}
@@ -39,10 +38,9 @@ const Information = () => {
       </div>
       <div className="md:p-2 w-full mt-2">
         <div
-          className={`border w-full h-28 rounded-2xl flex flex-col justify-center items-center ${
-            isDarkEnabled ? "border-gray-600" : ""
-          }`}
-          // style={{ background: colors.thirdCardBg, color: colors.text }}
+          className={`border w-full h-28 rounded-2xl flex flex-col justify-center items-center ${isDarkEnabled ? "border-gray-600" : ""
+            }`}
+        // style={{ background: colors.thirdCardBg, color: colors.text }}
         >
           <div className="px-4 py-1 bg-[#006afe] rounded-full flex justify-center gap-2 items-center">
             <WalletIcon color="white" width="20" height="20" />
@@ -51,7 +49,7 @@ const Information = () => {
               <p className="text-white text-sm font-semibold">{auth?.wallet}</p>
             </div>
           </div>
-          <p className="text-xs mt-2">Available Balance</p>
+          <p className="text-xs mt-2" style={{ color: colors.text }}>Available Balance</p>
         </div>
       </div>
       {/* <hr className="mt-4 border-t-1 border-[#9e78ce]" /> */}
@@ -60,12 +58,19 @@ const Information = () => {
 
       <div className="w-full md:p-2 mb-2">
         <div
-          className={`bg-[#] border w-full h-80 rounded-2xl flex flex-col mt-4 ${
-            isDarkEnabled ? "border-gray-600" : ""
-          }`}
+          className={`bg-[#] border w-full h-80 rounded-2xl flex flex-col mt-4 ${isDarkEnabled ? "border-gray-600" : ""
+            }`}
           style={{ background: colors.thirdCardBg, color: colors.text }}
         >
-          <p className="text-sm font-semibold p-4">Transactin History</p>
+          <div className="p-4 flex justify-between items-center">
+            <p className="text-sm font-semibold">Transaction History</p>
+            <p
+              className="text-xs font-semibold text-blue-500 cursor-pointer hover:underline"
+              onClick={() => navigate('/appointment')}
+            >
+              View All
+            </p>
+          </div>
           <hr className={`border-t-1 ${isDarkEnabled ? "border-gray-600" : ""}`} />
           <div className="p-4 flex flex-col gap-2 overflow-y-auto max-h-60 scrollbar-hide">
             {apointment.map((item, index) => (
@@ -76,7 +81,7 @@ const Information = () => {
                 <div>
                   <p className="text-xs font-semibold">{item.petOwnerName}</p>
                   <p className="text-xs font-semibold">
-                  <CurrencyRupee sx={{ width: 14, color: colors.text }} />{item.amount}
+                    <CurrencyRupee sx={{ width: 14, color: colors.text }} />{item.amount}
                   </p>
                 </div>
                 <div className="flex gap-2">
