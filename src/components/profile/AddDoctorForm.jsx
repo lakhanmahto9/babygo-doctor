@@ -16,7 +16,9 @@ const AddDoctorForm = ({ closeDoctorForm }) => {
     // clinicId: doctor[0]._id,
     name: "",
     phone: "",
+    phoneHide: false,
     email: "",
+    emailHide: false,
     registrationNumber: "",
     zipCode: "",
     locality: "",
@@ -26,6 +28,7 @@ const AddDoctorForm = ({ closeDoctorForm }) => {
     degree: "",
     experience: "",
     expertise: "",
+    expertiseHide: false,
     schedules: [
       {
         doctorInfo: "",
@@ -96,6 +99,13 @@ const AddDoctorForm = ({ closeDoctorForm }) => {
     }));
   };
 
+  const handleToggleVisibility = (field) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: !prev[field],
+    }));
+  };
+
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -148,8 +158,11 @@ const AddDoctorForm = ({ closeDoctorForm }) => {
               className={`h-12 px-4 w-full rounded-md outline-blue-500 ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-500"}`}
               style={{ background: colors.secondbackground }}
             />
-            <div className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white">
-              Visible
+             <div
+              className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white cursor-pointer"
+              onClick={() => handleToggleVisibility("phoneHide")}
+            >
+              {formData.phoneHide ? "Hide" : "Visible"}
             </div>
           </div>
         </div>
@@ -167,8 +180,11 @@ const AddDoctorForm = ({ closeDoctorForm }) => {
               className={`h-12 px-4 w-full rounded-md outline-blue-500 ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-500"}`}
               style={{ background: colors.secondbackground }}
             />
-            <div className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white">
-              Visible
+             <div
+              className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white cursor-pointer"
+              onClick={() => handleToggleVisibility("emailHide")}
+            >
+              {formData.emailHide ? "Hide" : "Visible"}
             </div>
           </div>
           <div className="w-full sm:w-1/2 relative">
@@ -187,9 +203,9 @@ const AddDoctorForm = ({ closeDoctorForm }) => {
         </div>
         <div className="flex gap-2">
           <p className="font-bold">Address Information</p>
-          <div className="w-auto bg-slate-400 rounded-lg px-2 text-white cursor-pointer">
+          {/* <div className="w-auto bg-slate-400 rounded-lg px-2 text-white cursor-pointer">
             <small>Hide</small>
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col sm:flex-row w-full gap-4">
           <div className="w-full sm:w-1/2">
@@ -303,8 +319,11 @@ const AddDoctorForm = ({ closeDoctorForm }) => {
               className={`h-12 px-4 w-full rounded-md outline-blue-500 ${isDarkEnabled ? "border border-gray-600" : "border-2 border-slate-500"}`}
               style={{ background: colors.secondbackground }}
             />
-            <div className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white">
-              Hide
+              <div
+              className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white cursor-pointer"
+              onClick={() => handleToggleVisibility("expertiseHide")}
+            >
+              {formData.expertiseHide ? "Hide" : "Visible"}
             </div>
           </div>
         </div>

@@ -19,7 +19,9 @@ const EditDoctor = ({ id, editdoctor, closeDoctorForm }) => {
     clinicId: id,
     name: editdoctor.name || "",
     phone: editdoctor.phone || "",
+    phoneHide: editdoctor.phoneHide || false,
     email: editdoctor.email || "",
+    emailHide: editdoctor.emailhide || false,
     registrationNumber: editdoctor.registrationNumber || "",
     zipCode: editdoctor.zipCode || "",
     locality: editdoctor.locality || "",
@@ -29,6 +31,7 @@ const EditDoctor = ({ id, editdoctor, closeDoctorForm }) => {
     degree: editdoctor.degree || "",
     experience: editdoctor.experience || "",
     expertise: editdoctor.expertise || "",
+    expertiseHide: editdoctor.expertiseHide || false,
     schedules:
       editdoctor.schedules?.length > 0
         ? editdoctor.schedules.map((s) => ({
@@ -107,6 +110,13 @@ const EditDoctor = ({ id, editdoctor, closeDoctorForm }) => {
     }));
   };
 
+  const handleToggle = (field) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: !prev[field],
+    }));
+  };
+
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -162,8 +172,11 @@ const EditDoctor = ({ id, editdoctor, closeDoctorForm }) => {
               className={`h-12 px-4 pl-2 w-full border-2 rounded-md border-slate-500 ${isDarkEnabled ? "" : "outline-blue-500"}`}
               style={{background:colors.secondbackground}}
             />
-            <div className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white">
-              Visible
+            <div
+              className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white cursor-pointer"
+              onClick={() => handleToggle('phoneHide')}
+            >
+              {formData.phoneHide ? "Visible" : "Hide"}
             </div>
           </div>
         </div>
@@ -181,8 +194,11 @@ const EditDoctor = ({ id, editdoctor, closeDoctorForm }) => {
               className={`h-12 px-4 pl-2 w-full border-2 rounded-md border-slate-500 ${isDarkEnabled ? "" : "outline-blue-500"}`}
               style={{background:colors.secondbackground}}
             />
-            <div className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white">
-              Visible
+           <div
+              className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white cursor-pointer"
+              onClick={() => handleToggle('emailHide')}
+            >
+              {formData.emailHide ? "Visible" : "Hide"}
             </div>
           </div>
           <div className="w-full sm:w-1/2 relative">
@@ -317,8 +333,11 @@ const EditDoctor = ({ id, editdoctor, closeDoctorForm }) => {
               className={`h-12 pl-2 pr-12 w-full border-2 rounded-md border-slate-500  ${isDarkEnabled ? "" : "outline-blue-500"}`}
               style={{background:colors.secondbackground}}
             />
-            <div className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white">
-              Hide
+            <div
+              className="absolute bottom-0 right-0 text-xs rounded-r-md bg-blue-500 h-12 flex justify-center items-center px-2 text-white cursor-pointer"
+              onClick={() => handleToggle('expertiseHide')}
+            >
+              {formData.expertiseHide ? "Visible" : "Hide"}
             </div>
           </div>
         </div>
